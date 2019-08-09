@@ -3,6 +3,7 @@ require_relative('../models/merchant.rb')
 require('pry-byebug')
 
 Tag.delete_all()
+Merchant.delete_all()
 
 tag1 = Tag.new(
   {
@@ -30,6 +31,9 @@ merchant2 = Merchant.new(
     'name' => 'Bannatynes'
   }
 )
+
+merchant1.save()
+merchant2.save()
 
 
 
