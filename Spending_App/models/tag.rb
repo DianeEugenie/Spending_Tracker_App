@@ -59,9 +59,11 @@ class Tag
     return tag
   end
 
+#Get merchants for a specific tag
   def merchants()
     sql = 'SELECT m.* FROM merchants m
-    INNER JOIN transactions t ON t.merchant_id = m.id
+    INNER JOIN transactions t
+    ON t.merchant_id = m.id
     WHERE t.tag_id = $1;'
     values = [@id]
     merchants = SqlRunner.run(sql, values)

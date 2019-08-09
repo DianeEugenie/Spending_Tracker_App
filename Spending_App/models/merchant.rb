@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('../models/transaction.rb')
 require('pry-byebug')
 
 class Merchant
@@ -55,6 +56,17 @@ class Merchant
     merchant_hash = SqlRunner.run(sql, values).first()
     merchant = Merchant.new(merchant_hash)
     return merchant
+  end
+
+#Get transactions for a specific merchant
+  def transactions()
+    sql = 'SELECT t.* FROM transactions t
+    INNER JOIN merchants m
+    ON t.merchant_id = m.id
+    WHERE t.merchant_id = $1;'
+    values = [@id]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map { |transaction| Transaction.new(transaction)}
   end
 
 
