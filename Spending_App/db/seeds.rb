@@ -40,10 +40,16 @@ merchant3 = Merchant.new(
   }
 )
 
+merchant4 = Merchant.new(
+  {
+    'name' => 'Vue'
+  }
+)
 
 merchant1.save()
 merchant2.save()
 merchant3.save()
+merchant4.save()
 
 transaction1 = Transaction.new(
   {
@@ -63,8 +69,18 @@ transaction2 = Transaction.new(
   }
 )
 
+transaction3 = Transaction.new(
+  {
+    'tag_id' => tag1.id,
+    'merchant_id' => merchant4.id,
+    'amount' => 18.99,
+    'tr_date' => '09/08'
+  }
+)
+
 transaction1.save()
 transaction2.save()
+transaction3.save()
 # transaction1.delete()
 
 # transaction2.merchant_id = merchant2.id

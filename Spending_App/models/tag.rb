@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('../models/merchant.rb')
 require('pry-byebug')
 
 class Tag
@@ -57,6 +58,16 @@ class Tag
     tag = Tag.new(tag_hash)
     return tag
   end
+
+  def merchants()
+    sql = 'SELECT m.* FROM merchants m
+    INNER JOIN transactions t ON t.merchant_id = m.id
+    WHERE t.tag_id = $1;'
+    values = [@id]
+    merchants = SqlRunner.run(sql, values)
+    return merchants.map { |merchant| Merchant.new(merchant)}
+  end
+
 
 
 end
