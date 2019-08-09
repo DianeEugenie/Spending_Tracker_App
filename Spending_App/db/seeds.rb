@@ -1,4 +1,5 @@
 require_relative('../models/tag.rb')
+require_relative('../models/merchant.rb')
 require('pry-byebug')
 
 Tag.delete_all()
