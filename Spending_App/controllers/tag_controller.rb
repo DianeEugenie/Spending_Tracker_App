@@ -21,7 +21,7 @@ end
 
 #SHOW
 get '/tags/:id' do
-  id = params[:id].to_i
+  id = params[:id].to_i()
   @tag = Tag.find(id)
   @merchants = Merchant.all()
   erb(:'tags/show')
