@@ -21,5 +21,18 @@ class Tag
     @id = id.to_i()
   end
 
+  def self.delete_all()
+    sql = 'DELETE FROM tags;'
+    SqlRunner.run(sql)
+  end
+
+  def self.all()
+    sql = 'SELECT * FROM tags;'
+    tag_data = SqlRunner.run(sql)
+    tags = tag_data.map { |tag| Tag.new(tag)}
+  end
+
+  binding.pry
+
 
 end

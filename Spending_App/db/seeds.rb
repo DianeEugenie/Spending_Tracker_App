@@ -1,6 +1,8 @@
 require_relative('../models/tag.rb')
 require('pry-byebug')
 
+Tag.delete_all()
+
 tag1 = Tag.new(
   {
     'type' => 'Entertainment'
