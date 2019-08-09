@@ -3,10 +3,15 @@ require('pry-byebug')
 
 tag1 = Tag.new(
   {
-  'type' => 'Entertainment'
+    'type' => 'Entertainment'
   }
 )
 
-tag2 = Tag.new({
-  'type' => 'Groceries'
-  })
+tag2 = Tag.new(
+  {
+    'type' => 'Groceries'
+  }
+)
+
+tag1.save()
+tag2.save()
