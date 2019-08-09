@@ -50,6 +50,22 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = 'DELETE FROM transactions
+    WHERE id = $1;'
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM transactions
+    WHERE id = $1;'
+    values = [id]
+    transaction_hash = SqlRunner.run(sql, values).first()
+    transaction = Transaction.new(transaction_hash)
+    return transaction
+  end
+
 
 
 end

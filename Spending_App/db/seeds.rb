@@ -65,6 +65,7 @@ transaction2 = Transaction.new(
 
 transaction1.save()
 transaction2.save()
+# transaction1.delete()
 
 # transaction2.merchant_id = merchant2.id
 # transaction2.amount = 18.20
