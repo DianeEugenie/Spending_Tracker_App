@@ -17,3 +17,10 @@ tag2 = Tag.new(
 
 tag1.save()
 tag2.save()
+
+tag2.type = 'Sports'
+tag2.update()
+
+binding.pry
+
+nil

@@ -32,7 +32,13 @@ class Tag
     tags = tag_data.map { |tag| Tag.new(tag)}
   end
 
-  binding.pry
+  def update()
+    sql = 'UPDATE tags
+    SET type = $1
+    WHERE id = $2;'
+    values =[@type, @id]
+    SqlRunner.run(sql, values)
+  end
 
 
 end
