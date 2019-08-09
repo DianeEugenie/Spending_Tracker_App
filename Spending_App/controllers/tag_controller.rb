@@ -28,3 +28,11 @@ get '/tags/:id' do
   @merchants = Merchant.all()
   erb(:'tags/show')
 end
+
+#DELETE
+post '/tags/:id/delete' do
+  id = params[:id].to_i()
+  tag = Tag.find(id)
+  tag.delete()
+  redirect '/tags'
+end
