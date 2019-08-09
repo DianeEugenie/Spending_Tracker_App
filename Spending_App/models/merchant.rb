@@ -47,5 +47,14 @@ class Merchant
     SqlRunner.run(sql, values)
   end
 
+  def self.find(id)
+    sql = 'SELECT * FROM merchants
+    WHERE id = $1'
+    values = [id]
+    merchant_hash = SqlRunner.run(sql, values).first()
+    merchant = Merchant.new(merchant_hash)
+    return merchant
+  end
+
 
 end
