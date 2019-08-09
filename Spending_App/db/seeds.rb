@@ -18,9 +18,23 @@ tag2 = Tag.new(
 tag1.save()
 tag2.save()
 
-tag2.type = 'Sports'
-tag2.update()
-tag1.delete()
+merchant1 = Merchant.new(
+  {
+    'name' => 'Cineworld'
+  }
+)
+
+merchant2 = Merchant.new(
+  {
+    'name' => 'Bannatynes'
+  }
+)
+
+
+
+# tag2.type = 'Sports'
+# tag2.update()
+# tag1.delete()
 
 binding.pry
 
