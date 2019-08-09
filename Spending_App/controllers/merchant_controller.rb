@@ -24,3 +24,11 @@ get '/merchants/:id' do
   @merchant = Merchant.find(id)
   erb(:'merchants/show')
 end
+
+#DELETE
+post '/merchants/:id/delete' do
+  id = params[:id].to_i()
+  merchant = Merchant.find(id)
+  merchant.delete()
+  redirect '/merchants'
+end

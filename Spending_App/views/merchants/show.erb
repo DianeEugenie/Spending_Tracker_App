@@ -1,0 +1,11 @@
+<h3>Merchant Details:</h3>
+
+<p>Name: <%= @merchant.name() %></p>
+
+<form action='/merchants/<%= @merchant.id %>/delete' method='POST'>
+  <input type='submit' value='Delete Tag'>
+</form>
+
+<form action='/merchants/<%= @merchant.id %>/edit' method='GET'>
+<input type='submit' value='Edit Tag'>
+</form>
