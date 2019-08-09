@@ -13,7 +13,6 @@ get '/tags/new' do
 end
 
 #CREATE
-
 post '/tags' do
   tag = Tag.new(params)
   tag.save()
@@ -21,7 +20,6 @@ post '/tags' do
 end
 
 #SHOW
-
 get '/tags/:id' do
   id = params[:id].to_i
   @tag = Tag.find(id)
@@ -34,5 +32,19 @@ post '/tags/:id/delete' do
   id = params[:id].to_i()
   tag = Tag.find(id)
   tag.delete()
+  redirect '/tags'
+end
+
+#EDIT
+get '/tags/:id/edit' do
+  id = params[:id].to_i
+  @tag = Tag.find(id)
+  erb(:'tags/edit')
+end
+
+#UPDATE
+post '/tags/:id' do
+  tag = Tag.new(params)
+  tag.update()
   redirect '/tags'
 end
