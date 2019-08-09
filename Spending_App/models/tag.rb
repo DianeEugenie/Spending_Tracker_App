@@ -4,11 +4,12 @@ require('pry-byebug')
 class Tag
 
   attr_reader :id
-  attr_accessor :type
+  attr_accessor :type, :budget_id
 
   def initialize(tag)
     @id = tag['id'].to_i if tag['id']
     @type = tag['type']
+    # @budget_id = tag['budget_id'].to_i
   end
 
   def save()
