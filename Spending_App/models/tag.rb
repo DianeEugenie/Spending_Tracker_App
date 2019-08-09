@@ -31,6 +31,7 @@ class Tag
     sql = 'SELECT * FROM tags;'
     tag_data = SqlRunner.run(sql)
     tags = tag_data.map { |tag| Tag.new(tag)}
+    return tags
   end
 
   def update()

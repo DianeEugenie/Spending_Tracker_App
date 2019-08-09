@@ -28,10 +28,18 @@ class Transaction
     @id = id.to_i()
   end
 
+  def self.delete_all()
+    sql = 'DELETE FROM transactions'
+    SqlRunner.run(sql)
+  end
 
 
-
-
+  def self.all()
+    sql = 'SELECT * FROM transactions'
+    transaction_data = SqlRunner.run(sql)
+    transactions = transaction_data.map { |transaction| Transaction.new(transaction) }
+    return transactions
+  end
 
 
 

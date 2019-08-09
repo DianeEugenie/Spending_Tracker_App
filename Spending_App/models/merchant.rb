@@ -30,6 +30,7 @@ class Merchant
     sql = 'SELECT * FROM merchants;'
     merchant_data = SqlRunner.run(sql)
     merchants = merchant_data.map{ |merchant| Merchant.new(merchant)}
+    return merchants
   end
 
   def update()
