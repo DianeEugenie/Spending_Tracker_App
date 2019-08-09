@@ -11,7 +11,7 @@ class TestTag < MiniTest::Test
 
   def test_get_type()
     assert_equal('Gym', @tag.type)
-  end
+  end 
 
 
 end
