@@ -3,8 +3,8 @@ require_relative('../models/merchant.rb')
 require_relative('../models/transaction.rb')
 require('pry-byebug')
 
-Tag.delete_all()
-Merchant.delete_all()
+# Tag.delete_all()
+# Merchant.delete_all()
 
 tag1 = Tag.new(
   {
@@ -42,6 +42,7 @@ merchant3 = Merchant.new(
 
 merchant1.save()
 merchant2.save()
+merchant3.save()
 
 transaction1 = Transaction.new(
   {
@@ -60,6 +61,9 @@ transaction2 = Transaction.new(
     'tr_date' => '09/08'
   }
 )
+
+transaction1.save()
+transaction2.save()
 
 # merchant1.name = 'PureGym'
 # merchant1.update()
