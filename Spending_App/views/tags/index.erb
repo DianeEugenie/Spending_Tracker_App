@@ -1,1 +1,21 @@
 <h2>Here come the tags!</h2>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th colspan="2">Merchants</th>
+  </tr>
+  <% for tag in @tags %>
+  <tr>
+    <td><a href="/tags/<%= tag.id %>"><%= tag.type() %></a>
+    </td>
+
+    <td colspan="2">
+    <% for merchant in tag.merchants %>
+    <%=merchant.name()%> <% end %>
+    </td>
+
+
+  </tr>
+  <% end %>
+</table>
