@@ -36,7 +36,7 @@ class Tag
     sql = 'UPDATE tags
     SET type = $1
     WHERE id = $2;'
-    values =[@type, @id]
+    values = [@type, @id]
     SqlRunner.run(sql, values)
   end
 

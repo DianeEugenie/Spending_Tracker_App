@@ -35,6 +35,9 @@ merchant2 = Merchant.new(
 merchant1.save()
 merchant2.save()
 
+merchant1.name = 'PureGym'
+merchant1.update()
+merchant2.delete()
 
 
 # tag2.type = 'Sports'
