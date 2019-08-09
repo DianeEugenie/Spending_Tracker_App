@@ -7,11 +7,11 @@
   </tr>
   <% for tag in @tags %>
   <tr>
-    <td><a href="/tags/<%= tag.id %>"><%= tag.type() %></a>
+    <td><a href="/tags/<%= tag.id() %>"><%= tag.type() %></a>
     </td>
 
     <td colspan="2">
-    <% for merchant in tag.merchants %>
+    <% for merchant in tag.merchants() %>
     <%=merchant.name()%> <% end %>
     </td>
 
