@@ -20,6 +20,7 @@ tag2.save()
 
 tag2.type = 'Sports'
 tag2.update()
+tag1.delete()
 
 binding.pry
 
