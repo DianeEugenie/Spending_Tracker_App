@@ -8,6 +8,23 @@ get '/transactions' do
   erb(:'transactions/index')
 end
 
+#NEW
+get '/transactions/new' do
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  erb(:'transactions/new')
+end
+
+
+#CREATE
+post '/transactions' do
+  transaction = Transaction.new(params)
+  transaction.save()
+  redirect '/transactions'
+end
+
+
+
 #SHOW
 get '/transactions/:id' do
   id = params[:id].to_i()

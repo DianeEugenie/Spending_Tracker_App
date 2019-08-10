@@ -1,0 +1,41 @@
+<h3>Create a New Transaction</h3>
+
+<form action='/transactions' method='POST'>
+
+  <label for='tag-id'>Tag</label>
+  <!-- <input required type='text' id='tag-type' name='type'> -->
+
+  <select name='tag_id' id='tag-id'>
+    <% for tag in @tags %>
+    <option value='<%= tag.id() %>'>
+      <%= tag.type %>
+    </option>
+    <% end %>
+  </select>
+
+  <label for='merchant-id'>Merchant</label>
+<!--
+  <input required type='text' id='merchant-type' name='name'> -->
+
+  <select name='merchant_id' id="merchant-id">
+    <% for merchant in @merchants %>
+    <option value='<%= merchant.id()%>'>
+      <%= merchant.name %>
+    </option>
+    <% end %>
+  </select>
+
+
+
+  <label for='tr-date'>Transaction Date</label>
+  <input required type='date' id='tr-date' name='tr_date'>
+
+  <label for='tr-amount'>Amount</label>
+  <input required type='number' min='0.01' step='0.01' id='tr-amount' name='amount'>
+
+
+
+  <input type='submit' value='Create Transaction'>
+
+
+</form>
