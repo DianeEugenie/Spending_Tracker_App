@@ -12,6 +12,6 @@ get '/' do
   erb(:index)
 end
 
-# binding.pry
-#
-# nil
+binding.pry
+
+nil

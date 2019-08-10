@@ -69,7 +69,7 @@ class Transaction
 
   def merchant()
     sql = 'SELECT * FROM merchants
-    WHERE id = $1'
+    WHERE id = $1;'
     values = [@merchant_id]
     merchant = SqlRunner.run(sql, values).first()
     return Merchant.new(merchant)
@@ -77,13 +77,17 @@ class Transaction
 
   def tag()
     sql = 'SELECT * FROM tags
-    WHERE id = $1'
+    WHERE id = $1;'
     values = [@tag_id]
     tag = SqlRunner.run(sql, values).first()
     return Tag.new(tag)
   end
 
-
-
+  def self.sum()
+    transactions = self.all()
+    amounts = transactions.map{ |transaction| transaction.amount}
+    sum = amounts.sum()
+    return sum
+  end
 
 end
