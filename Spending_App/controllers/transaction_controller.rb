@@ -38,21 +38,19 @@ post '/transactions/:id/delete' do
   redirect '/transactions'
 end
 
-
-
 #EDIT
-# get '/transactions/:id/edit'
+get '/transactions/:id/edit' do
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  id = params[:id].to_i()
+  @transaction = Transaction.find(id)
+  erb(:'transactions/edit')
+end
 
 
 #UPDATE
-
-
-
-#
-# #
-# #
-# @id = transaction['id'].to_i if transaction['id']
-# @tag_id = transaction['tag_id'].to_i
-# @merchant_id = transaction['merchant_id'].to_i
-# @tr_date = transaction['tr_date']
-# @amount = transaction['amount'].to_f
+post '/transactions/:id' do
+  transaction = Transaction.new(params)
+  transaction.update()
+  redirect '/transactions'
+end

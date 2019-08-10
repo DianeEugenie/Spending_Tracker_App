@@ -1,0 +1,42 @@
+<h3>Edit Transaction</h3>
+
+<form action='/transactions/<%= @transaction.id%>' method='POST'>
+
+  <label for='tag-id'>Tag</label>
+
+  <select name='tag_id' id='tag-id'>
+    <% for tag in @tags %>
+
+    <option <%='selected' if @transaction.tag.type() == tag.type() %> value='<%= tag.id() %>'>
+      <%= tag.type() %>
+    </option>
+
+    <% end %>
+  </select>
+
+  <label for='merchant-id'>Merchant</label>
+
+  <select name='merchant_id' id="merchant-id">
+    <% for merchant in @merchants %>
+
+    <option <%='selected' if @transaction.merchant.name() == merchant.name() %> value=<%= merchant.id()%>>
+      <%= merchant.name() %>
+
+    </option>
+    <% end %>
+  </select>
+
+
+
+  <label for='tr-date'>Transaction Date</label>
+  <input required type='date' id='tr-date' name='tr_date' value=<%= @transaction.tr_date()%>>
+
+  <label for='tr-amount'>Amount</label>
+  <input required type='number' min='0.01' step='0.01' id='tr-amount' name='amount' value=<%= @transaction.amount%>>
+
+
+
+  <input type='submit' value='Update Transaction'>
+
+
+</form>
