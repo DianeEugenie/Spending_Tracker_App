@@ -2,6 +2,7 @@ require_relative('../db/sql_runner')
 require_relative('../models/tag.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/merchant.rb')
+
 require('pry-byebug')
 
 class Transaction
@@ -65,6 +66,23 @@ class Transaction
     transaction = Transaction.new(transaction_hash)
     return transaction
   end
+
+  def merchant()
+    sql = 'SELECT * FROM merchants
+    WHERE id = $1'
+    values = [@merchant_id]
+    merchant = SqlRunner.run(sql, values).first()
+    return Merchant.new(merchant)
+  end
+
+  def tag()
+    sql = 'SELECT * FROM tags
+    WHERE id = $1'
+    values = [@tag_id]
+    tag = SqlRunner.run(sql, values).first()
+    return Tag.new(tag)
+  end
+
 
 
 
