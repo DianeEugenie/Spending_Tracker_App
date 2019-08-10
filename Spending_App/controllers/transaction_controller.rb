@@ -8,6 +8,13 @@ get '/transactions' do
   erb(:'transactions/index')
 end
 
+#SHOW
+get '/transactions/:id' do
+  id = params[:id].to_i()
+  @transaction = Transaction.find(id)
+  erb(:'transactions/show')
+end
+
 
 
 #
