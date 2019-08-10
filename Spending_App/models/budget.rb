@@ -32,4 +32,13 @@ class Budget
     return budgets
   end
 
+  def update()
+    sql = 'UPDATE budgets
+    SET budget = $1
+    WHERE id = $2;'
+    values = [@budget, @id]
+    SqlRunner.run(sql, values)
+  end
+
+
 end

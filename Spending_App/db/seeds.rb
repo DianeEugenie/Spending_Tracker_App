@@ -55,6 +55,9 @@ budget2 = Budget.new(
 budget1.save()
 budget2.save()
 
+# budget1.budget = 200
+# budget1.update()
+
 
 tag1 = Tag.new(
   {
