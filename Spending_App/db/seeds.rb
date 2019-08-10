@@ -4,10 +4,10 @@ require_relative('../models/transaction.rb')
 require_relative('../models/budget.rb')
 require('pry-byebug')
 
-# Transaction.delete_all()
-# Tag.delete_all()
-# # Budget.delete_all()
-# Merchant.delete_all()
+Transaction.delete_all()
+Tag.delete_all()
+Budget.delete_all()
+Merchant.delete_all()
 
 
 
