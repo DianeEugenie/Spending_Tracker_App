@@ -40,5 +40,22 @@ class Budget
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = 'DELETE FROM budgets
+    WHERE id = $1;'
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM budgets
+    WHERE id = $1;'
+    values = [id]
+    budget_hash = SqlRunner.run(sql, values).first()
+    budget = Budget.new(budget_hash)
+    return budget
+  end
+
+  
 
 end
