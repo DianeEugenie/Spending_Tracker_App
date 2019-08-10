@@ -7,7 +7,7 @@ class Budget
 
   def initialize(budget)
     @id = budget['id'].to_i if budget['id']
-    @budget = budget['budget']
+    @budget = budget['budget'].to_i
   end
 
 

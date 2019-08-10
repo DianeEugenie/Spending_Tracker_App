@@ -10,14 +10,14 @@ class Tag
   def initialize(tag)
     @id = tag['id'].to_i if tag['id']
     @type = tag['type']
-    # @budget_id = tag['budget_id'].to_i
+    @budget_id = tag['budget_id'].to_i
   end
 
   def save()
-    sql = 'INSERT INTO tags (type)
-    VALUES ($1)
+    sql = 'INSERT INTO tags (type, budget_id)
+    VALUES ($1, $2)
     RETURNING id;'
-    values = [@type]
+    values = [@type, @budget_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id.to_i()
@@ -37,9 +37,9 @@ class Tag
 
   def update()
     sql = 'UPDATE tags
-    SET type = $1
-    WHERE id = $2;'
-    values = [@type, @id]
+    SET (type, budget_id) = ($1, $2)
+    WHERE id = $3;'
+    values = [@type, @budget_id, @id]
     SqlRunner.run(sql, values)
   end
 
