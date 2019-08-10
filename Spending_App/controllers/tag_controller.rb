@@ -1,9 +1,11 @@
 require_relative('../models/tag.rb')
 require_relative('../models/merchant.rb')
+require_relative('../models/budget.rb')
 
 #INDEX
 get '/tags' do
   @tags = Tag.all()
+  @budgets = Budget.all()
   erb(:'tags/index')
 end
 
@@ -24,6 +26,7 @@ get '/tags/:id' do
   id = params[:id].to_i()
   @tag = Tag.find(id)
   @merchants = Merchant.all()
+  @budgets = Budget.all()
   erb(:'tags/show')
 end
 

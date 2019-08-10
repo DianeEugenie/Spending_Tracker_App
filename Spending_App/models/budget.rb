@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('../models/tag.rb')
 
 class Budget
 
@@ -56,6 +57,59 @@ class Budget
     return budget
   end
 
-  
+
+  # def decrease(transaction)
+  #   budget_left = @budget
+  #   tr_amount = transaction.amount()
+  #   return unless @budget > 0
+  #   @budget -= tr_amount
+  #   update()
+  # end
+  #
+
+  def tags()
+    sql = 'SELECT * FROM tags
+    WHERE budget_id = $1;'
+    values = [@id]
+    tags_data = SqlRunner.run(sql, values)
+    tags = tags_data.map { |tag| Tag.new(tag) }
+    return tags
+  end
+
+
+
+
+
+
+    # film = screening.film
+    # price = film.price
+    # return unless screening.empty_seats > 0
+    #
+    #
+    #   def decrease(budget)
+    #     if budget.tag_id == @tag_id && budget.budget() > 0
+    #       budget_left = budget.budget()
+    #       tr_amount = @amount
+    #       new_budget = (budget.budget() - tr_amount)
+    #       budget.update()
+    #     end
+    #   end
+  #
+  # def alert()
+  #   if (@budget > 0 && @budget <= 30)
+  #     return "Only £#{@budget} left!"
+  #   elsif (@budget == 0)
+  #     return 'Budget reached!'
+  #   elsif (@budget < 0)
+  #     return 'Over budget!'
+  #   else
+  #     return "£#{@budget} left!"
+  #   end
+  # end
+
+
+
+
+
 
 end

@@ -1,0 +1,26 @@
+<h2> Here are all the budgets!</h2>
+
+<table>
+  <tr>
+    <th>
+      Budget:
+    </th>
+    <th>
+      Tag type:
+    </th>
+    <th></th>
+  </tr>
+  <tr>
+  <% for budget in @budgets %>
+  <td>
+    <a href='/budgets/<%= budget.id() %>'><%= budget.budget() %></a>
+  </td>
+    <% for tag in budget.tags() %>
+  <td>
+    <%= tag.type()%>
+  </td>
+    <% end %>
+  </tr>
+
+  <% end %>
+</table>

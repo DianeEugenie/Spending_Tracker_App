@@ -1,5 +1,6 @@
 require_relative('../db/sql_runner')
 require_relative('../models/merchant.rb')
+require_relative('../models/budget.rb')
 require('pry-byebug')
 
 class Tag
@@ -69,6 +70,18 @@ class Tag
     merchants = SqlRunner.run(sql, values)
     return merchants.map { |merchant| Merchant.new(merchant)}
   end
+
+  #Get budget for a specific tag
+  def budget()
+    sql = 'SELECT * FROM budgets
+    WHERE id = $1'
+    values = [@budget_id]
+    budget_hash = SqlRunner.run(sql, values).first()
+    budget = Budget.new(budget_hash)
+    return budget
+  end
+
+
 
 
 

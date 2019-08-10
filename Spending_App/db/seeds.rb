@@ -91,7 +91,7 @@ transaction2 = Transaction.new(
   {
     'tag_id' => tag2.id,
     'merchant_id' => merchant3.id,
-    'amount' => 18.99,
+    'amount' => 50.99,
     'tr_date' => '2019-07-15'
   }
 )
