@@ -21,9 +21,30 @@ post '/budgets' do
 end
 
 #SHOW
-
 get '/budgets/:id' do
   id = params['id'].to_i()
   @budget = Budget.find(id)
   erb(:'/budgets/show')
+end
+
+#DELETE
+post '/budgets/:id/delete' do
+  id = params['id'].to_i()
+  budget = Budget.find(id)
+  budget.delete()
+  redirect '/budgets'
+end
+
+#EDIT
+get '/budgets/:id/edit' do
+  id = params['id'].to_i()
+  @budget = Budget.find(id)
+  erb(:'budgets/edit')
+end
+
+#UPDATE
+post '/budgets/:id' do
+  budget = Budget.new(params)
+  budget.update()
+  redirect '/budgets'
 end

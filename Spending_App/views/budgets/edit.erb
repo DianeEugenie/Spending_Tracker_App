@@ -1,0 +1,9 @@
+<h3>Edit your Budget</h3>
+
+<form action='/budgets/<%= @budget.id() %>' method='POST'>
+<label for='budget-amount'>Amount:</label>
+<input required type='text' id='budget-amount' name='budget' value=<%= @budget.budget() %>>
+
+<input type='submit' value='Update Budget'>
+
+</form>
