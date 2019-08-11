@@ -2,6 +2,7 @@ require_relative('../db/sql_runner')
 require_relative('../models/tag.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/merchant.rb')
+require_relative('../models/budget.rb')
 
 require('pry-byebug')
 
@@ -83,6 +84,7 @@ class Transaction
     return Tag.new(tag)
   end
 
+#Total of all transactions
   def self.sum()
     transactions = self.all()
     amounts = transactions.map{ |transaction| transaction.amount}
@@ -90,7 +92,7 @@ class Transaction
     return sum
   end
 
-  #Sort by time?
+  #Sort by time
   def self.all_by_date()
     sql = 'SELECT * FROM transactions
     ORDER BY tr_date DESC;'
@@ -99,10 +101,38 @@ class Transaction
     return sorted_transactions
   end
 
-  # #Filter by merchant?
-  # def self.all_by_merchant()
-  #   sql = 'SELECT * FROM transactions
-  #   WHERE '
+  #Filter by tag
+  def self.all_filtered(tag_id)
+    sql = 'SELECT * FROM transactions
+    WHERE tag_id = $1
+    ORDER by tr_date DESC;'
+    values = [tag_id]
+    filtered_data = SqlRunner.run(sql, values)
+    filtered_transactions = filtered_data.map {
+    |transaction| Transaction.new(transaction)}
+    return filtered_transactions
+  end
+
+  #Filter by unique tags
+  def self.filtered()
+    sql = 'SELECT DISTINCT ON (tag_id) transactions.* FROM transactions;'
+    tr_data = SqlRunner.run(sql)
+    tags = tr_data.map { |transaction| Transaction.new(transaction)}
+    return tags
+  end
+
+  #Select budget of a tag of the transaction?
+  def get_budget()
+    sql = 'SELECT b.* FROM budgets b
+    INNER JOIN transactions t
+    ON t.tag_id = b.tag_id
+    WHERE t.tag_id = $1
+    LIMIT 1;'
+    values = [@tag_id]
+    budget = SqlRunner.run(sql, values).first()
+    return Budget.new(budget)
+  end
+
 
 
 

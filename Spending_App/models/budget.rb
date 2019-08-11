@@ -86,6 +86,7 @@ class Budget
     update()
   end
 
+#Decrease budget by transaction - whenever you click on the page again the budget keeps going down
   def decrease_budget()
     sql = 'SELECT * FROM transactions
     WHERE tag_id = $1'
@@ -98,48 +99,18 @@ class Budget
     update()
   end
 
-
-
-
-
-
-
-
-
-
-  # def self.sum()
-  #   transactions = Budget.transactions()
-  #   amount = transactions.map{ |transaction| transaction.amount }
-  #   sum = amount.sum()
-  #   return sum
+  # #Maybe give budget the power to save transaction and decrease budget this way?
+  # def save_transaction(transaction)
+  #   price = transaction.amount()
+  #   Transaction.new(
+  #     'tag_id' => @tag_id,
+  #     'merchant_id' => transaction.merchant_id(),
+  #     'tr_date' => transaction.tr_date(),
+  #     'amount' => price).save()
+  #   @budget -= price
+  #   update()
+  #   alert()
   # end
-
-
-
-
-
-  # def decrease_budget(transaction)
-  #   transactions = Transaction.all()
-  #   for transaction in transactions
-  #     amount = transactions.reduce{ |transaction| transaction.amount() }
-  #     @budget -= amount
-  #   end
-  # end
-  #
-
-
-
-  #
-  #   if (@tag_id == transaction.tag_id())
-  #     budget_left = @budget
-  #     tr_amount = transaction.amount()
-  #     return unless @budget > 0
-  #     @budget -= tr_amount
-  #     update()
-  #   end
-  # end
-
-
 
 
 

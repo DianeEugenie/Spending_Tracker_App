@@ -2,8 +2,15 @@
 
 <table>
   <tr>
-    <th>Transactions</th>
-    <th>Tag</th>
+
+    <th>
+      Tag
+      <% for transaction in @filtered %>
+      <form action='/transactions/filtered/<%= transaction.tag_id%>' method='GET'>
+        <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
+      </form>
+      <% end %>
+    </th>
     <th>Merchant</th>
     <th>
       Transaction Date
@@ -16,7 +23,6 @@
   </tr>
   <% for transaction in @transactions %>
   <tr>
-    <td><%= transaction.id %></td>
     <td><%= transaction.tag().type() %></td>
     <td><%= transaction.merchant().name() %></td>
     <td><%= transaction.tr_date() %>
@@ -29,6 +35,5 @@
   <% end %>
   <tr>
     <td colspan='5'><%= Transaction.sum()%></td>
-    <td></td>
   </tr>
 </table>

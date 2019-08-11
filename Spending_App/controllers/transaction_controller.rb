@@ -4,13 +4,23 @@ require_relative('../models/merchant.rb')
 
 #INDEX
 get '/transactions' do
+  @filtered = Transaction.filtered()
   @transactions = Transaction.all()
   erb(:'transactions/index')
 end
 
 #SORTED INDEX
 get '/transactions/sorted' do
+  @filtered = Transaction.filtered()
   @transactions = Transaction.all_by_date()
+  erb(:'/transactions/index')
+end
+
+#FILTERED INDEX
+get '/transactions/filtered/:tag_id' do
+  @filtered = Transaction.filtered()
+  tag_id = params[:tag_id].to_i()
+  @transactions = Transaction.all_filtered(tag_id)
   erb(:'/transactions/index')
 end
 

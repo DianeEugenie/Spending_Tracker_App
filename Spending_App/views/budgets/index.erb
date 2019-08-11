@@ -13,7 +13,9 @@
   <tr>
   <% for budget in @budgets %>
   <td>
-    <a href='/budgets/<%= budget.id() %>'><%= budget.budget() %></a>
+    <a href='/budgets/<%= budget.id() %>'>
+      <%= budget.budget() %>
+    </a>
   </td>
   <% for tag in @tags %>
   <% if budget.tag_id() == tag.id()%>
