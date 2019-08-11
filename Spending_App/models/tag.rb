@@ -70,6 +70,15 @@ class Tag
     return merchants.map { |merchant| Merchant.new(merchant)}
   end
 
+  #Get all transactions for a specific tag
+  def transactions()
+    sql = 'SELECT * FROM transactions
+    WHERE tag_id = $1;'
+    values = [@id]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map { |transaction| Transaction.new(transaction)}
+  end
+
   #Get budget for a specific tag
   def budget()
     sql = 'SELECT * FROM budgets
@@ -78,6 +87,7 @@ class Tag
     budget = SqlRunner.run(sql, values).first()
     return Budget.new(budget) unless budget == nil
   end
+
 
 
 

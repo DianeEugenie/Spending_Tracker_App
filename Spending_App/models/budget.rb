@@ -78,13 +78,27 @@ class Budget
   end
 
 
-  # def sum()
-  #   transactions = budget.transactions()
-  #   amount = transactions.map{ |transaction| transaction.amount }
-  #   sum = amount.sum()
-  #   @budget -= sum
-  #   update()
-  # end
+  def sum()
+    transactions = transactions()
+    amount = transactions.map{ |transaction| transaction.amount }
+    sum = amount.sum()
+    @budget -= sum
+    update()
+  end
+
+  def decrease_budget()
+    sql = 'SELECT * FROM transactions
+    WHERE tag_id = $1'
+    values = [@tag_id]
+    transaction_hash = SqlRunner.run(sql, values)
+    transactions = transaction_hash.map { |transaction| Transaction.new(transaction)}
+    amount = transactions.map{ |transaction| transaction.amount }
+    sum = amount.sum()
+    @budget -= sum
+    update()
+  end
+
+
 
 
 
