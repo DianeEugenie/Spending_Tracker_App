@@ -92,6 +92,9 @@ class Transaction
     return sum
   end
 
+#Total of filtered selections
+
+
   #Sort by time
   def self.all_by_date()
     sql = 'SELECT * FROM transactions

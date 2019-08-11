@@ -5,16 +5,6 @@
   <label for='tag-type'>Type:</label>
   <input required type='text' id='tag-type' name='type'>
 
-  <label for='budget'>Budget</label>
-  <select name='budget' id='budget'>
-    <% for budget in @budgets %>
-    <option value='<%= budget.id()%>'>
-    <%= budget.budget()%>
-    </option>
-    <% end %>
-  </select>
-  
   <input type='submit' value='Create Tag'>
-
 
 </form>

@@ -3,9 +3,11 @@
 <form action='/transactions' method='POST'>
 
   <label for='tag-id'>Tag</label>
-  <!-- <input required type='text' id='tag-type' name='type'> -->
 
   <select name='tag_id' id='tag-id'>
+    <option selected disabled value='Select Tag'>
+      Select Tag
+    </option>
     <% for tag in @tags %>
     <option value='<%= tag.id() %>'>
       <%= tag.type %>
@@ -14,10 +16,11 @@
   </select>
 
   <label for='merchant-id'>Merchant</label>
-<!--
-  <input required type='text' id='merchant-type' name='name'> -->
 
   <select name='merchant_id' id="merchant-id">
+    <option selected disabled value='Select Merchant'>
+      Select Merchant
+    </option>
     <% for merchant in @merchants %>
     <option value='<%= merchant.id()%>'>
       <%= merchant.name %>

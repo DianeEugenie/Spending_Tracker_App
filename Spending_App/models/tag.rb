@@ -85,7 +85,7 @@ class Tag
     WHERE tag_id = $1'
     values = [@id]
     budget = SqlRunner.run(sql, values).first()
-    return Budget.new(budget) unless budget == nil
+    return Budget.new(budget)
   end
 
 
