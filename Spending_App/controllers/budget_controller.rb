@@ -10,11 +10,13 @@ end
 
 #NEW
 get '/budgets/new' do
+  @tags = Tag.all()
   erb(:'/budgets/new')
 end
 
 #CREATE
 post '/budgets' do
+  @tags = Tag.all()
   budget = Budget.new(params)
   budget.save()
   redirect '/budgets'
@@ -22,6 +24,7 @@ end
 
 #SHOW
 get '/budgets/:id' do
+  @tags = Tag.all()
   id = params['id'].to_i()
   @budget = Budget.find(id)
   erb(:'/budgets/show')
@@ -37,6 +40,7 @@ end
 
 #EDIT
 get '/budgets/:id/edit' do
+  @tags = Tag.all()
   id = params['id'].to_i()
   @budget = Budget.find(id)
   erb(:'budgets/edit')

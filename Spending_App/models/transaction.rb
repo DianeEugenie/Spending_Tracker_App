@@ -90,5 +90,22 @@ class Transaction
     return sum
   end
 
+  #Sort by time?
+  def self.all_by_date()
+    sql = 'SELECT * FROM transactions
+    ORDER BY tr_date DESC;'
+    transaction_data = SqlRunner.run(sql)
+    sorted_transactions = transaction_data.map { |transaction| Transaction.new(transaction) }
+    return sorted_transactions
+  end
+
+  # #Filter by merchant?
+  # def self.all_by_merchant()
+  #   sql = 'SELECT * FROM transactions
+  #   WHERE '
+
+
+
+
 
 end

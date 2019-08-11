@@ -15,11 +15,11 @@
   <td>
     <a href='/budgets/<%= budget.id() %>'><%= budget.budget() %></a>
   </td>
-    <% for tag in budget.tags() %>
-  <td>
-    <%= tag.type()%>
-  </td>
-    <% end %>
+  <% for tag in @tags %>
+  <% if budget.tag_id() == tag.id()%>
+  <td><%= tag.type()%></td>
+  <% end %>
+  <% end %>
   </tr>
 
   <% end %>

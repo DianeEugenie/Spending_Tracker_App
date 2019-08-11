@@ -6,19 +6,18 @@ require('pry-byebug')
 class Tag
 
   attr_reader :id
-  attr_accessor :type, :budget_id
+  attr_accessor :type
 
   def initialize(tag)
     @id = tag['id'].to_i if tag['id']
     @type = tag['type']
-    @budget_id = tag['budget_id'].to_i
   end
 
   def save()
-    sql = 'INSERT INTO tags (type, budget_id)
-    VALUES ($1, $2)
+    sql = 'INSERT INTO tags (type)
+    VALUES ($1)
     RETURNING id;'
-    values = [@type, @budget_id]
+    values = [@type]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id.to_i()
@@ -38,9 +37,9 @@ class Tag
 
   def update()
     sql = 'UPDATE tags
-    SET (type, budget_id) = ($1, $2)
-    WHERE id = $3;'
-    values = [@type, @budget_id, @id]
+    SET type = $1
+    WHERE id = $2;'
+    values = [@type, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -74,13 +73,11 @@ class Tag
   #Get budget for a specific tag
   def budget()
     sql = 'SELECT * FROM budgets
-    WHERE id = $1'
-    values = [@budget_id]
-    budget_hash = SqlRunner.run(sql, values).first()
-    budget = Budget.new(budget_hash)
-    return budget
+    WHERE tag_id = $1'
+    values = [@id]
+    budget = SqlRunner.run(sql, values).first()
+    return Budget.new(budget) unless budget == nil
   end
-
 
 
 

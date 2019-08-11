@@ -3,7 +3,19 @@
 <form action='/budgets' method='POST'>
 
   <label for='budget-amount'>Amount</label>
-  <input required type='text' id='budget-amount' name='budget'>
+  <input required type='number' min='0.01' step='0.01' id='budget-amount' name='budget'>
+
+
+  <label for='tag-id'>Tag</label>
+
+  <select name='tag_id' id='tag-id'>
+    <% for tag in @tags %>
+    <option value='<%= tag.id() %>'>
+      <%= tag.type %>
+    </option>
+    <% end %>
+  </select>
+
 
   <input type="submit" value='Create Budget'>
 

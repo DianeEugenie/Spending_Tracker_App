@@ -2,6 +2,7 @@ require('minitest/autorun')
 require('minitest/rg')
 
 require_relative('../budget.rb')
+require_relative('../tag.rb')
 
 class TestBudget< MiniTest::Test
 
@@ -9,23 +10,27 @@ class TestBudget< MiniTest::Test
   def setup()
     @budget1 = Budget.new(
       {
-        'budget' => 500
+        'budget' => 500,
+        'tag_id' => 1
       }
     )
 
     @budget2 = Budget.new(
       {
-        'budget' => 29
+        'budget' => 29,
+        'tag_id' => 6
       }
     )
     @budget3 = Budget.new(
       {
-        'budget' => -200
+        'budget' => -200,
+        'tag_id' => 9
       }
     )
     @budget4 = Budget.new(
       {
-        'budget' => 0
+        'budget' => 0,
+        'tag_id' => 19
       }
     )
 
@@ -34,6 +39,10 @@ class TestBudget< MiniTest::Test
 
   def test_get_budget()
     assert_equal(500, @budget1.budget())
+  end
+
+  def test_get_tag_id()
+    assert_equal(1, @budget1.tag_id())
   end
 
   def test_budget_low()

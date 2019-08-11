@@ -8,6 +8,12 @@ get '/transactions' do
   erb(:'transactions/index')
 end
 
+#SORTED INDEX
+get '/transactions/sorted' do
+  @transactions = Transaction.all_by_date()
+  erb(:'/transactions/index')
+end
+
 #NEW
 get '/transactions/new' do
   @tags = Tag.all()

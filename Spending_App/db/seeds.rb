@@ -5,11 +5,25 @@ require_relative('../models/budget.rb')
 require('pry-byebug')
 
 Transaction.delete_all()
-Tag.delete_all()
 Budget.delete_all()
 Merchant.delete_all()
+Tag.delete_all()
 
 
+tag1 = Tag.new(
+  {
+    'type' => 'Entertainment',
+  }
+)
+
+tag2 = Tag.new(
+  {
+    'type' => 'Groceries',
+  }
+)
+
+tag1.save()
+tag2.save()
 
 merchant1 = Merchant.new(
   {
@@ -31,7 +45,7 @@ merchant3 = Merchant.new(
 
 merchant4 = Merchant.new(
   {
-    'name' => 'Vue'
+    'name' => 'VUE'
   }
 )
 
@@ -42,13 +56,15 @@ merchant4.save()
 
 budget1 = Budget.new(
   {
-    'budget' => 500
+    'budget' => 500,
+    'tag_id' => tag1.id
   }
 )
 
 budget2 = Budget.new(
   {
-    'budget' => 300
+    'budget' => 300,
+    'tag_id' => tag2.id
   }
 )
 
@@ -61,22 +77,7 @@ budget2.save()
 # budget1.update()
 
 
-tag1 = Tag.new(
-  {
-    'type' => 'Entertainment',
-    'budget_id' => budget1.id
-  }
-)
 
-tag2 = Tag.new(
-  {
-    'type' => 'Groceries',
-    'budget_id' => budget2.id
-  }
-)
-
-tag1.save()
-tag2.save()
 
 transaction1 = Transaction.new(
   {

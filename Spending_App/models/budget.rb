@@ -1,21 +1,23 @@
 require_relative('../db/sql_runner.rb')
 require_relative('../models/tag.rb')
+require_relative('../models/transaction.rb')
 
 class Budget
 
   attr_reader :id
-  attr_accessor :budget
+  attr_accessor :budget, :tag_id
 
   def initialize(budget)
     @id = budget['id'].to_i if budget['id']
-    @budget = budget['budget'].to_i
+    @budget = budget['budget'].to_f
+    @tag_id = budget['tag_id'].to_i
   end
 
   def save()
-    sql = 'INSERT INTO budgets (budget)
-    VALUES ($1)
+    sql = 'INSERT INTO budgets (budget, tag_id)
+    VALUES ($1, $2)
     RETURNING id;'
-    values = [@budget]
+    values = [@budget, @tag_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id.to_i()
@@ -35,9 +37,9 @@ class Budget
 
   def update()
     sql = 'UPDATE budgets
-    SET budget = $1
-    WHERE id = $2;'
-    values = [@budget, @id]
+    SET (budget, tag_id) = ($1, $2)
+    WHERE id = $3;'
+    values = [@budget, @tag_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -58,54 +60,87 @@ class Budget
   end
 
 
-  # def decrease(transaction)
-  #   budget_left = @budget
-  #   tr_amount = transaction.amount()
-  #   return unless @budget > 0
-  #   @budget -= tr_amount
-  #   update()
-  # end
-  #
-
-  def tags()
+  def tag()
     sql = 'SELECT * FROM tags
-    WHERE budget_id = $1;'
-    values = [@id]
-    tags_data = SqlRunner.run(sql, values)
-    tags = tags_data.map { |tag| Tag.new(tag) }
-    return tags
+    WHERE id = $1;'
+    values = [@tag_id]
+    tag = SqlRunner.run(sql, values).first
+    return Tag.new(tag)
+  end
+
+  def transactions()
+    sql = 'SELECT * FROM transactions
+    WHERE tag_id = $1'
+    values = [@tag_id]
+    transaction_hash = SqlRunner.run(sql, values)
+    transactions = transaction_hash.map { |transaction| Transaction.new(transaction)}
+    return transactions
   end
 
 
+  # def sum()
+  #   transactions = budget.transactions()
+  #   amount = transactions.map{ |transaction| transaction.amount }
+  #   sum = amount.sum()
+  #   @budget -= sum
+  #   update()
+  # end
 
 
 
 
-    # film = screening.film
-    # price = film.price
-    # return unless screening.empty_seats > 0
-    #
-    #
-    #   def decrease(budget)
-    #     if budget.tag_id == @tag_id && budget.budget() > 0
-    #       budget_left = budget.budget()
-    #       tr_amount = @amount
-    #       new_budget = (budget.budget() - tr_amount)
-    #       budget.update()
-    #     end
-    #   end
-  #
-  # def alert()
-  #   if (@budget > 0 && @budget <= 30)
-  #     return "Only £#{@budget} left!"
-  #   elsif (@budget == 0)
-  #     return 'Budget reached!'
-  #   elsif (@budget < 0)
-  #     return 'Over budget!'
-  #   else
-  #     return "£#{@budget} left!"
+
+
+
+
+  # def self.sum()
+  #   transactions = Budget.transactions()
+  #   amount = transactions.map{ |transaction| transaction.amount }
+  #   sum = amount.sum()
+  #   return sum
+  # end
+
+
+
+
+
+  # def decrease_budget(transaction)
+  #   transactions = Transaction.all()
+  #   for transaction in transactions
+  #     amount = transactions.reduce{ |transaction| transaction.amount() }
+  #     @budget -= amount
   #   end
   # end
+  #
+
+
+
+  #
+  #   if (@tag_id == transaction.tag_id())
+  #     budget_left = @budget
+  #     tr_amount = transaction.amount()
+  #     return unless @budget > 0
+  #     @budget -= tr_amount
+  #     update()
+  #   end
+  # end
+
+
+
+
+
+
+  def alert()
+    if (@budget > 0 && @budget <= 30)
+      return "Only £#{@budget} left!"
+    elsif (@budget == 0)
+      return 'Budget reached!'
+    elsif (@budget < 0)
+      return 'Over budget!'
+    else
+      return "£#{@budget} left!"
+    end
+  end
 
 
 
