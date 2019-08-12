@@ -9,7 +9,7 @@
 <select name='tag_id' id='tag-id'>
   <% for tag in @tags %>
 
-  <option <%='selected' if @budget.tag.type() == tag.type()%> disabled value='<%= tag.id() %>'>
+  <option <%='selected' if @budget.tag.id() == tag.id()%> value='<%= tag.id() %>'>
     <%= tag.type() %>
   </option>
   <% end %>

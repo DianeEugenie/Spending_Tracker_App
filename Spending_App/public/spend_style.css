@@ -7,13 +7,11 @@ body {
   display: flex;
   border: 1px solid black;
   justify-content: center;
-  align-items: stretch;
   flex-direction: row;
 }
 
 nav {
   display: flex;
-  /* justify-content: space-around; */
   align-items: flex-start;
   padding: 0.5em;
 }
@@ -26,20 +24,17 @@ ul {
 
 li a {
   display: flex;
-  padding: 0.05em;
-  align-items: center;
-  /* justify-content: center; */
+  padding-left: 0.1em;
 }
 
 a {
   text-decoration: none;
-  margin: 0 0.2em;
-
+  margin: 0.2em 0;
 }
 
 li a:hover, li a:active {
   box-shadow: 1px 1px 2px 1px grey;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 main {
@@ -97,6 +92,7 @@ table {
 table, tr, td {
   border: 1px solid black;
 }
+
 
 .top-section {
   display: flex;

@@ -31,16 +31,14 @@
     <th>Amount</th>
     <th>Budget</th>
     <th>Details</th>
-  </tr>
   <% for transaction in @transactions %>
-  <%transaction.get_budget.decrease_budget()%>
   <tr>
     <td><%= transaction.tag().type() %></td>
     <td><%= transaction.merchant().name() %></td>
     <td><%= transaction.tr_date() %>
     </td>
     <td><%= transaction.amount() %></td>
-    <td><%= transaction.get_budget().budget() %></td>
+    <td><%= transaction.get_budget.budget() %></td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
     <input type='submit' value='View Transaction'>
     </form></td>
