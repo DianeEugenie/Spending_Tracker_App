@@ -1,6 +1,6 @@
-<header>
-  <h2>Here come the transactions!</h2>
-</header>
+
+  <h2>All Transactions</h2>
+
 
 <section class='tr-table'>
 
@@ -14,7 +14,12 @@
   <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
 </form>
 <% end %>
+
+
 </filters>
+
+
+
 </section>
 
 <section>
@@ -29,7 +34,6 @@
       </form>
     </th>
     <th>Amount</th>
-    <th>Budget</th>
     <th>Budget left</th>
     <th>Details</th>
   <% for transaction in @transactions %>
@@ -39,7 +43,6 @@
     <td><%= transaction.tr_date() %>
     </td>
     <td><%= transaction.amount() %></td>
-    <td><%= transaction.get_budget.budget() %></td>
     <td><%= transaction.get_budget.budget() - transaction.get_budget.spent() %></td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
     <input type='submit' value='View Transaction'>
@@ -52,7 +55,7 @@
     <% for transaction in @transactions %>
     <%total += transaction.amount() %>
     <% end %>
-    <%=total %>
+    Total: <%=total %>
     </td>
   </tr>
   <tr>

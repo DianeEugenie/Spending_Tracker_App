@@ -3,26 +3,30 @@
 <table>
   <tr>
     <th>
-      Budget:
-    </th>
-    <th>
       Tag type:
     </th>
-    <th></th>
+    <th>
+      Start Budget:
+    </th>
+    <th>Budget left:
+    </th>
+
   </tr>
   <tr>
   <% for budget in @budgets %>
-  <td>
-    <a href='/budgets/<%= budget.id() %>'>
-      <%= budget.budget %>
-      <%= budget.spent %>
-    </a>
-  </td>
   <% for tag in @tags %>
   <% if budget.tag_id() == tag.id()%>
   <td><%= tag.type()%></td>
   <% end %>
   <% end %>
+  <td>
+    <a href='/budgets/<%= budget.id() %>'>
+      <%= budget.budget %>
+
+    </a>
+  </td>
+  <td><%= budget.budget - budget.spent %></td>
+
   </tr>
 
   <% end %>

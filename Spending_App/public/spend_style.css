@@ -3,17 +3,28 @@
   padding: 0;
 }
 
+html {
+  background-color: #E0E0E0;
+  display: flex;
+  justify-content:center;
+  align-items: stretch;
+  color: #465251;
+  height: 100%;
+  font-family: 'Catamaran', sans-serif;
+}
+
 body {
   display: flex;
-  border: 1px solid black;
   justify-content: center;
   flex-direction: row;
+
 }
 
 nav {
   display: flex;
   align-items: flex-start;
   padding: 0.5em;
+  background-color: #8fa19f;
 }
 ul {
   display: flex;
@@ -24,33 +35,91 @@ ul {
 
 li a {
   display: flex;
-  padding-left: 0.1em;
+  padding: 0.1em;
+  background-color: #f5f7f7;
+  border-radius: 3px;
+  border: 1px solid #4d5453;
+  color: #74807f;
+  justify-content: space-around;
 }
 
 a {
   text-decoration: none;
   margin: 0.2em 0;
+
 }
 
-li a:hover, li a:active {
-  box-shadow: 1px 1px 2px 1px grey;
+li a:hover{
+  box-shadow: 1px 1px 3px 1px #4d5453;
   border-radius: 3px;
+  color: #3f4d4d;
 }
+
+li a:active {
+  box-shadow: 1px 1px 3px 1px #4d5453;
+  border-radius: 3px;
+  color: #3f4d4d;
+  transform: translateY(0.1em);
+}
+
 
 main {
   display: flex;
   /* justify-content: center; */
   flex-direction: column;
   align-items: center;
-  /* background-color: grey; */
+  background-color: #c5d6d5;
   padding: 2em;
-  min-width: 60%;
+  min-width: 40em;
 }
+
+input {
+  background-color: #f5f7f7;
+  border: 1px solid #4d5453;
+  border-radius: 3px;
+  padding: 0.1em;
+}
+input:hover {
+  background-color: #f5f7f7;
+  box-shadow: 1px 1px 2px 1px grey;
+  border: 1px solid #4d5453;
+  border-radius: 3px;
+  padding: 0.1em;
+}
+
+input:active {
+  background-color: #f5f7f7;
+  box-shadow: 1px 1px 2px 1px grey;
+  border: 1px solid #4d5453;
+  border-radius: 3px;
+  padding: 0.1em;
+  transform: translateY(0.1em);
+}
+
+
+
+select {
+background-color: #f5f7f7;
+}
+
+h1 {
+  font-family: 'Jacques Francois Shadow', cursive;
+  font-size: 3em;
+}
+/*
+section {
+  display: flex;
+align-items: stretch;
+} */
 
 .filter {
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.3em;
+}
+.filter input {
+  margin-right: 0.3em;
 }
 /* .tr-table {
   display: flex;
@@ -69,7 +138,9 @@ label, option, input {
 }
 
 header {
-  background-color: pink;
+border: 1px groove grey;
+border-radius: 5px;
+padding: 0.3em;
 }
 
 main header {
@@ -79,19 +150,22 @@ main header {
   margin-bottom: 0.5em;
 }
 
-section {
-  display: flex;
-/* align-items: stretch; */
-}
+
 
 table {
   display: flex;
   margin-left: 0.2em;
+
 }
 
 table, tr, td {
   border: 1px solid black;
 }
+
+.tr-table {
+  flex-direction: column;
+}
+
 
 
 .top-section {
