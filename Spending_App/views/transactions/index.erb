@@ -33,7 +33,6 @@
     </th>
     <th>Amount</th>
     <th>Budget left</th>
-    <th>Details</th>
   <% for transaction in @transactions %>
   <tr>
     <td><%= transaction.tag().type() %></td>
@@ -41,16 +40,12 @@
     <td><%= transaction.tr_date() %>
     </td>
     <td><%= transaction.amount() %></td>
-    <td><%= transaction.get_budget.budget() - transaction.get_budget.spent() %></td>
-    <td style="color: #cf4848;"><% budget = (transaction.get_budget.budget() - transaction.get_budget.spent()) %>
-          <% if (budget > 0 && budget <= 30) %>
-            Only £ <%=budget %> left!
-          <% elsif (budget == 0) %>
-            Budget reached!
-          <% elsif (budget < 0) %>
-            Over budget!
-          <% end %>
-    </td>
+    <td <% if transaction.get_budget.budget() - transaction.get_budget.spent() < 0 %>
+      style='color: #cf4848;'
+      <% else %>
+      style='color: #465251;' <% end %>>
+
+<%= transaction.get_budget.budget() - transaction.get_budget.spent() %></td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
     <input type='submit' value='View Transaction'>
     </form></td>
@@ -71,22 +66,26 @@
 
 </table>
 
-<article class='alert'>
-  <% for transaction in @transactions %>
 
-  <% transaction.get_budget.budget() - transaction.get_budget.spent() %>
-  <% budget = (transaction.get_budget.budget() - transaction.get_budget.spent()) %>
-        <% if (budget > 0 && budget <= 30) %>
-        ONLY £ <%=budget %> left for <%=transaction.tag().type()%>!
-        <% elsif (budget == 0) %>
-        Budget reached for <%=transaction.tag().type()%>!
-        <% elsif (budget < 0) %>
-        Over budget for <%=transaction.tag().type()%>!
+
+  <article class='alert'>
+    <% for budget in @budgets %>
+        <% if (budget.budget() > 0 && budget.budget() <= 30) %>
+        ONLY £ <%=budget %> left for <%=budget.tag().type()%>!<br />
+        <% elsif (budget.budget() == 0) %>
+        Budget reached for <%=budget.tag().type()%>!<br />
+        <% elsif (budget.budget() < 0) %>
+        Over budget for <%=budget.tag().type()%>!<br />
         <% end %>
-  <% end %>
 
-
+<% end %>
 </article>
+
+
+
+
+
+
 
 
 

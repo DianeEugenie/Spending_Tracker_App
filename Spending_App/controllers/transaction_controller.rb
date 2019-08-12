@@ -6,6 +6,7 @@ require_relative('../models/merchant.rb')
 get '/transactions' do
   @filtered = Transaction.filtered()
   @transactions = Transaction.all()
+  @budgets = Budget.all()
   erb(:'transactions/index')
 end
 

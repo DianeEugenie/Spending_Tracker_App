@@ -126,10 +126,3 @@ class Budget
 
 
   end
-
-
-
-
-
-
-end
