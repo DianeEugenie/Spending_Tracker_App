@@ -125,18 +125,6 @@ class Budget
   # end
 
 
-
-
-  def alert()
-    if (@budget > 0 && @budget <= 30)
-      return "Only £#{@budget} left!"
-    elsif (@budget == 0)
-      return 'Budget reached!'
-    elsif (@budget < 0)
-      return 'Over budget!'
-    else
-      return "£#{@budget} left!"
-    end
   end
 
 

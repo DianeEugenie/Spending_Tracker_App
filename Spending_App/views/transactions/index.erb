@@ -1,5 +1,5 @@
 
-  <h2>All Transactions</h2>
+  <h3>All Transactions</h3>
 
 
 <section class='tr-table'>
@@ -14,8 +14,6 @@
   <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
 </form>
 <% end %>
-
-
 </filters>
 
 
@@ -44,6 +42,15 @@
     </td>
     <td><%= transaction.amount() %></td>
     <td><%= transaction.get_budget.budget() - transaction.get_budget.spent() %></td>
+    <td style="color: #cf4848;"><% budget = (transaction.get_budget.budget() - transaction.get_budget.spent()) %>
+          <% if (budget > 0 && budget <= 30) %>
+            Only £ <%=budget %> left!
+          <% elsif (budget == 0) %>
+            Budget reached!
+          <% elsif (budget < 0) %>
+            Over budget!
+          <% end %>
+    </td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
     <input type='submit' value='View Transaction'>
     </form></td>
@@ -63,6 +70,25 @@
   </tr>
 
 </table>
+
+<article class='alert'>
+  <% for transaction in @transactions %>
+
+  <% transaction.get_budget.budget() - transaction.get_budget.spent() %>
+  <% budget = (transaction.get_budget.budget() - transaction.get_budget.spent()) %>
+        <% if (budget > 0 && budget <= 30) %>
+        ONLY £ <%=budget %> left for <%=transaction.tag().type()%>!
+        <% elsif (budget == 0) %>
+        Budget reached for <%=transaction.tag().type()%>!
+        <% elsif (budget < 0) %>
+        Over budget for <%=transaction.tag().type()%>!
+        <% end %>
+  <% end %>
+
+
+</article>
+
+
 
 </section>
 </section>
