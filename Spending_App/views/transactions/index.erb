@@ -30,6 +30,7 @@
     </th>
     <th>Amount</th>
     <th>Budget</th>
+    <th>Budget left</th>
     <th>Details</th>
   <% for transaction in @transactions %>
   <tr>
@@ -39,6 +40,7 @@
     </td>
     <td><%= transaction.amount() %></td>
     <td><%= transaction.get_budget.budget() %></td>
+    <td><%= transaction.get_budget.budget() - transaction.get_budget.spent() %></td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
     <input type='submit' value='View Transaction'>
     </form></td>

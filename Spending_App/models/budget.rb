@@ -11,7 +11,7 @@ class Budget
     @id = budget['id'].to_i if budget['id']
     @budget = budget['budget'].to_f
     @tag_id = budget['tag_id'].to_i
-    #greate a budget left property?
+    #create a budget left property?
   end
 
   def save()
@@ -84,7 +84,6 @@ class Budget
     amount = transactions.map{ |transaction| transaction.amount }
     sum = amount.sum()
     @budget -= sum
-    update()
   end
 
 
@@ -99,6 +98,18 @@ class Budget
     @budget -= sum
     update()
   end
+
+#Get the total amount spent per transaction belonging to a specific budget with tag_id
+  def spent()
+
+    total = 0
+    for transaction in transactions()
+      total += transaction.amount
+    end
+    return total
+  end
+
+
 
   # #Maybe give budget the power to save transaction and decrease budget this way?
   # def save_transaction(transaction)

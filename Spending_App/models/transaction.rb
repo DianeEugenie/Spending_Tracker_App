@@ -28,7 +28,7 @@ class Transaction
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id.to_i()
-    adjust_budget()
+    # adjust_budget()
   end
 
   def self.delete_all()
@@ -160,6 +160,7 @@ class Transaction
   # return new_budget
   # new_budget.update()
 
+    #
 
 
 
