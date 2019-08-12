@@ -1,11 +1,14 @@
 require_relative('../models/tag.rb')
 require_relative('../models/merchant.rb')
 require_relative('../models/budget.rb')
+require_relative('../models/transaction.rb')
 
 #INDEX
 get '/tags' do
   @tags = Tag.all()
   @budgets = Budget.all()
+  @merchants = Merchant.all()
+  @transactions = Transaction.all()
   erb(:'tags/index')
 end
 

@@ -69,6 +69,15 @@ class Transaction
     return transaction
   end
 
+  def self.find_tag(tag_id)
+    sql = 'SELECT * FROM transactions
+    WHERE tag_id = $1;'
+    values = [tag_id]
+    transactions_hash = SqlRunner.run(sql, values)
+    transactions = transactions_hash.map{ |transaction| Transaction.new(transaction)}
+    return transactions
+  end
+
   def merchant()
     sql = 'SELECT * FROM merchants
     WHERE id = $1;'
