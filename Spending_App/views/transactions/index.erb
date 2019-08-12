@@ -4,7 +4,20 @@
 
 <section class='tr-table'>
 
+  <article class='alert'>
+      <% for budget in @budgets %>
 
+      <% new_budget = budget.budget() - budget.spent() %>
+
+      <% if (new_budget > 0 && new_budget <= 30) %>
+      ONLY £ <%= '%.2f' %new_budget%> left for <%=budget.tag().type()%>!<br />
+      <% elsif (new_budget == 0) %>
+      Budget reached for <%=budget.tag().type()%>!<br />
+      <% elsif (new_budget < 0) %>
+      <%= '%.2f' %new_budget %> OVER budget for <%=budget.tag().type()%>!<br />
+      <%end%>
+      <%end%>
+  </article>
 
 <section>
 
@@ -19,6 +32,9 @@
 
 
 </section>
+
+
+
 
 <section>
 <table>
@@ -39,13 +55,12 @@
     <td><%= transaction.merchant().name() %></td>
     <td><%= transaction.tr_date() %>
     </td>
-    <td><%= transaction.amount() %></td>
-    <td <% if transaction.get_budget.budget() - transaction.get_budget.spent() < 0 %>
+    <td><%= '%.2f' % transaction.amount() %></td>
+    <td <% if transaction.get_budget.budget() - transaction.get_budget.spent() <= 0 %>
       style='color: #cf4848;'
       <% else %>
-      style='color: #465251;' <% end %>>
-
-<%= transaction.get_budget.budget() - transaction.get_budget.spent() %></td>
+      style='color: #465251;' <% end %>> <%= '%.2f' % (transaction.get_budget.budget() - transaction.get_budget.spent()) %>
+    </td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
     <input type='submit' value='View Transaction'>
     </form></td>
@@ -57,29 +72,17 @@
     <% for transaction in @transactions %>
     <%total += transaction.amount() %>
     <% end %>
-    Total: <%=total %>
+    Total: <strong><%= '%.2f' % total %></strong>
     </td>
   </tr>
   <tr>
-    <td colspan="5" style='text-align: center;'>Total of all transactions: <%= Transaction.sum()%></td>
+    <td colspan="5" style='text-align: center;'>Total of all transactions: <strong><%= '%.2f' % Transaction.sum()%></strong></td>
   </tr>
 
 </table>
 
 
 
-  <article class='alert'>
-    <% for budget in @budgets %>
-        <% if (budget.budget() > 0 && budget.budget() <= 30) %>
-        ONLY £ <%=budget %> left for <%=budget.tag().type()%>!<br />
-        <% elsif (budget.budget() == 0) %>
-        Budget reached for <%=budget.tag().type()%>!<br />
-        <% elsif (budget.budget() < 0) %>
-        Over budget for <%=budget.tag().type()%>!<br />
-        <% end %>
-
-<% end %>
-</article>
 
 
 

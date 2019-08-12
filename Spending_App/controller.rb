@@ -10,6 +10,7 @@ require('pry-byebug')
 
 
 get '/' do
+  @budgets = Budget.all()
   erb(:index)
 end
 

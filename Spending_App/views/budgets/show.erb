@@ -1,6 +1,6 @@
 <h3>Budget Details</h3>
 
-<p>Budget: <%= @budget.budget() %> </p>
+<p>Budget: <%= '%.2f' % @budget.budget() %> </p>
 <p>Tag: <%= @budget.tag().type() %></p>
 
 <form action='/budgets/<%= @budget.id %>/delete' method='POST'>

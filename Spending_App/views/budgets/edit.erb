@@ -2,7 +2,7 @@
 
 <form action='/budgets/<%= @budget.id() %>' method='POST'>
 <label for='budget-amount'>Amount:</label>
-<input required type='text' id='budget-amount' name='budget' value=<%= @budget.budget() %>>
+<input required type='text' id='budget-amount' name='budget' value='<%='%.2f' % @budget.budget() %>'>
 
 <label for='tag-id'>Tag</label>
 

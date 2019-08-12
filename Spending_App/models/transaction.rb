@@ -137,31 +137,6 @@ class Transaction
     return Budget.new(budget)
   end
 
-  # def adjust_budget()
-  #   old_budget = get_budget()
-  #   new_budget = old_budget.decrease_budget()
-  #   new_budget.update()
-  # end
-
-  def adjust_budget()
-    sql = 'SELECT b.* FROM budgets b
-    INNER JOIN transactions t
-    ON t.tag_id = b.tag_id
-    WHERE t.tag_id = $1
-    LIMIT 1;'
-    values = [@tag_id]
-    budget = SqlRunner.run(sql, values).first()
-    old_budget = Budget.new(budget)
-    new_budget = old_budget.decrease_budget
-  end
-  # #attempt to decrease budget from this function
-  # new_budget = Budget.new(budget)
-  # new_budget.decrease_budget()
-  # return new_budget
-  # new_budget.update()
-
-    #
-
 
 
 

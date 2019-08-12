@@ -1,1 +1,15 @@
 
+<article class='alert'>
+    <% for budget in @budgets %>
+
+    <% new_budget = budget.budget() - budget.spent() %>
+
+    <% if (new_budget > 0 && new_budget <= 30) %>
+    ONLY £ <%= '%.2f' %new_budget%> left for <%=budget.tag().type()%>!<br />
+    <% elsif (new_budget == 0) %>
+    Budget reached for <%=budget.tag().type()%>!<br />
+    <% elsif (new_budget < 0) %>
+    <%= '%.2f' %new_budget %> OVER budget for <%=budget.tag().type()%>!<br />
+    <%end%>
+    <%end%>
+</article>

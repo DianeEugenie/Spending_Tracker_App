@@ -130,8 +130,6 @@ align-items: stretch;
   flex-direction: row;
 } */
 
-
-
 form {
   display: flex;
   flex-direction: column;
@@ -142,9 +140,10 @@ label, option, input {
 }
 
 header {
-border: 1px groove grey;
+border: 1px solid #4d5453;
 border-radius: 5px;
-padding: 0.3em;
+padding: 0 2em;
+background-color: #f5f7f7;
 }
 
 main header {
@@ -180,7 +179,7 @@ section {
   align-items: center;
 }
 .alert{
-  margin-top: 2em;
+  margin: 0.5em;
   display: flex;
   align-items: center;
   border: 1px solid #cf4848;

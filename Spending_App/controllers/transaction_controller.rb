@@ -14,6 +14,7 @@ end
 get '/transactions/sorted' do
   @filtered = Transaction.filtered()
   @transactions = Transaction.all_by_date()
+  @budgets = Budget.all()
   erb(:'/transactions/index')
 end
 
@@ -22,6 +23,7 @@ get '/transactions/filtered/:tag_id' do
   @filtered = Transaction.filtered()
   tag_id = params[:tag_id].to_i()
   @transactions = Transaction.all_filtered(tag_id)
+  @budgets = Budget.all()
   erb(:'/transactions/index')
 end
 

@@ -21,11 +21,11 @@
   <% end %>
   <td>
     <a href='/budgets/<%= budget.id() %>'>
-      <%= budget.budget %>
+      <%= '%.2f' % budget.budget %>
 
     </a>
   </td>
-  <td><%= budget.budget - budget.spent %></td>
+  <td><%= '%.2f' % (budget.budget - budget.spent) %></td>
 
   </tr>
 
