@@ -14,7 +14,7 @@
   <% for budget in @budgets %>
   <td>
     <a href='/budgets/<%= budget.id() %>'>
-      <%= budget.budget() %>
+      <%= budget.budget %>
     </a>
   </td>
   <% for tag in @tags %>

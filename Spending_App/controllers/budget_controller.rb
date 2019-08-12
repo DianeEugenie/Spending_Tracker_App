@@ -27,7 +27,7 @@ get '/budgets/:id' do
   @tags = Tag.all()
   id = params['id'].to_i()
   @budget = Budget.find(id)
-  # @budget.decrease_budget() #click on show details page keeps going down
+  # @budget.decrease_budget() #Decrease budget by transaction - whenever you click on the page again the budget keeps going down
   erb(:'/budgets/show')
 end
 

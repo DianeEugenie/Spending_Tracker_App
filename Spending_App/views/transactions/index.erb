@@ -1,12 +1,23 @@
-<h2>Here come the transactions!</h2>
+<header>
+  <h2>Here come the transactions!</h2>
+</header>
+
+<section class='tr-table'>
 
 
+
+<section>
+
+<filters class='filter'>
 <% for transaction in @filtered %>
 <form action='/transactions/filtered/<%= transaction.tag_id%>' method='GET'>
   <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
 </form>
 <% end %>
+</filters>
+</section>
 
+<section>
 <table>
   <tr>
     <th>Tag</th>
@@ -22,6 +33,7 @@
     <th>Details</th>
   </tr>
   <% for transaction in @transactions %>
+  <%transaction.get_budget.decrease_budget()%>
   <tr>
     <td><%= transaction.tag().type() %></td>
     <td><%= transaction.merchant().name() %></td>
@@ -35,17 +47,19 @@
   </tr>
   <% end %>
   <tr>
-    <td colspan='5'>
+    <td colspan='5' style='text-align: right;'>
     <% total = 0 %>
     <% for transaction in @transactions %>
     <%total += transaction.amount() %>
     <% end %>
-    <%= total %>
+    <%=total %>
     </td>
-
+  </tr>
+  <tr>
+    <td colspan="5" style='text-align: center;'>Total of all transactions: <%= Transaction.sum()%></td>
   </tr>
 
 </table>
 
-
-<p>Total of all transactions:<%= Transaction.sum()%></p>
+</section>
+</section>

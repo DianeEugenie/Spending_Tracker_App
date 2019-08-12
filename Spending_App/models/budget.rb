@@ -11,6 +11,7 @@ class Budget
     @id = budget['id'].to_i if budget['id']
     @budget = budget['budget'].to_f
     @tag_id = budget['tag_id'].to_i
+    #greate a budget left property?
   end
 
   def save()
@@ -86,7 +87,7 @@ class Budget
     update()
   end
 
-#Decrease budget by transaction - whenever you click on the page again the budget keeps going down
+
   def decrease_budget()
     sql = 'SELECT * FROM transactions
     WHERE tag_id = $1'

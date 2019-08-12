@@ -1,3 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+nav {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: flex-start;
+  padding: 0.5em;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+
+li a {
+  display: flex;
+  padding: 0.05em;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+a {
+  text-decoration: none;
+  margin: 0 0.2em;
+
+}
+
+li a:hover, li a:active {
+  box-shadow: 1px 1px 2px 1px grey;
+  border-radius: 5px;
+}
+
+main {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  /* background-color: grey; */
+  padding: 2em;
+  min-width: 60%;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+
+}
+/* .tr-table {
+  display: flex;
+  flex-direction: row;
+} */
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label, option, input {
+  margin: 0.3em 0;
+}
+
+header {
+  background-color: pink;
+}
+
+main header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+section {
+  display: flex;
+/* align-items: stretch; */
+}
+
+table {
+  display: flex;
+  margin-left: 0.2em;
+}
+
 table, tr, td {
   border: 1px solid black;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
 }

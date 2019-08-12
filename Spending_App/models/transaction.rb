@@ -92,7 +92,7 @@ class Transaction
     return sum
   end
 
-#Total of filtered selections
+
 
 
   #Sort by time
