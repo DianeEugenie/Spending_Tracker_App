@@ -1,6 +1,6 @@
-<h3>Create a New Merchant</h3>
+<header><h3>Create a New Merchant</h3></header>
 
-<form action='/merchants' method='POST'>
+<form class='merchant' action='/merchants' method='POST'>
 
   <label for='merchant-name'>Name</label>
   <input required type='text' id='merchant-name' name='name'>
@@ -8,3 +8,8 @@
   <input type="submit" value='Create Merchant'>
 
 </form>
+<br />
+<header><h4>The following merchants already exist:</h4></header>
+<%for merchant in @merchants%>
+<p><%=merchant.name() %></p>
+<% end %>

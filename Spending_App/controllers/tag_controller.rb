@@ -15,6 +15,7 @@ end
 #NEW
 get '/tags/new' do
   @budgets = Budget.all()
+  @tags = Tag.all()
   erb(:'tags/new')
 end
 
@@ -23,7 +24,7 @@ post '/tags' do
   @budgets = Budget.all()
   tag = Tag.new(params)
   tag.save()
-  redirect '/tags'
+  redirect '/budgets/new'
 end
 
 #SHOW

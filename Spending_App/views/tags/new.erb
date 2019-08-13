@@ -1,10 +1,21 @@
-<h3>Create a New Tag</h3>
+<header><h3>Create a New Tag</h3></header>
 
-<form action='/tags' method='POST'>
+<form class='tag' action='/tags' method='POST'>
 
-  <label for='tag-type'>Type:</label>
-  <input required type='text' id='tag-type' name='type'>
+  <label for='tag-type'>Tag Type:</label>
+
+
+  <input type='text' id='tag-type' name='type' >
+
+
 
   <input type='submit' value='Create Tag'>
 
+
 </form>
+<br />
+
+<header><h4>The following tags already exist:</h4></header>
+<%for tag in @tags%>
+<p><%=tag.type() %></p>
+<% end %>

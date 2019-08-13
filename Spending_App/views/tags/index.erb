@@ -1,6 +1,6 @@
-<h3>Here come the tags!</h3>
+<header><h3>Here come the tags!</h3></header>
 
-<table>
+<table class='tags'>
   <tr>
     <th>Type</th>
     <th colspan="2">Merchants</th>
@@ -20,19 +20,3 @@
   </tr>
   <% end %>
 </table>
-
-<section>
-<% for tag in @tags %>
-<% for transaction in @transactions %>
-
-<%= transaction.tag().type() %> |
-<%= transaction.merchant().name() %></br>
-
-<%end%>
-<%end%>
-
-
-
-
-
-</section>

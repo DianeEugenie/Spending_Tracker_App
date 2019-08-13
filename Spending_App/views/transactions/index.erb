@@ -1,56 +1,66 @@
 
-  <h3>All Transactions</h3>
+<header><h3>All Transactions</h3></header>
+
+<article class='alert'>
+    <% for budget in @budgets %>
+
+    <% new_budget = budget.budget() - budget.spent() %>
+
+    <% if (new_budget > 0 && new_budget <= 30) %>
+    ONLY £ <%= '%.2f' %new_budget%> left for <%=budget.tag().type()%>!<br />
+    <% elsif (new_budget == 0) %>
+    Budget reached for <%=budget.tag().type()%>!<br />
+    <% elsif (new_budget < 0) %>
+    <%= '%.2f' %new_budget %> OVER budget for <%=budget.tag().type()%>!<br />
+    <%end%>
+    <%end%>
+</article>
 
 
 <section class='tr-table'>
 
-  <article class='alert'>
-      <% for budget in @budgets %>
 
-      <% new_budget = budget.budget() - budget.spent() %>
 
-      <% if (new_budget > 0 && new_budget <= 30) %>
-      ONLY £ <%= '%.2f' %new_budget%> left for <%=budget.tag().type()%>!<br />
-      <% elsif (new_budget == 0) %>
-      Budget reached for <%=budget.tag().type()%>!<br />
-      <% elsif (new_budget < 0) %>
-      <%= '%.2f' %new_budget %> OVER budget for <%=budget.tag().type()%>!<br />
-      <%end%>
-      <%end%>
-  </article>
+<!-- <section> -->
 
-<section>
 
 <filters class='filter'>
-<% for transaction in @filtered %>
+  <% for transaction in @filtered %>
 <form action='/transactions/filtered/<%= transaction.tag_id%>' method='GET'>
   <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
 </form>
 <% end %>
+<form action='/transactions/sorted' method='GET'>
+  <input type='submit' value='Sort Descending'>
+</form>
 </filters>
 
 
 
-</section>
+
+
+
+<!--
+</section> -->
 
 
 
 
 <section>
-<table>
+<table class='transactions'>
+  <thead>
   <tr>
     <th>Tag</th>
     <th>Merchant</th>
-    <th>
-      Transaction Date
-      <form action='/transactions/sorted' method='GET'>
-        <input type='submit' value='Sort Descending'>
-      </form>
-    </th>
+    <th>Date</th>
     <th>Amount</th>
     <th>Budget left</th>
+  </tr>
+  </thead>
   <% for transaction in @transactions %>
+  <tbody>
   <tr>
+
     <td><%= transaction.tag().type() %></td>
     <td><%= transaction.merchant().name() %></td>
     <td><%= transaction.tr_date() %>
@@ -62,24 +72,24 @@
       style='color: #465251;' <% end %>> <%= '%.2f' % (transaction.get_budget.budget() - transaction.get_budget.spent()) %>
     </td>
     <td><form action='/transactions/<%= transaction.id %>' method='GET'>
-    <input type='submit' value='View Transaction'>
+    <input type='submit' value='Edit or Delete'>
     </form></td>
   </tr>
   <% end %>
-  <tr>
-    <td colspan='5' style='text-align: right;'>
-    <% total = 0 %>
-    <% for transaction in @transactions %>
-    <%total += transaction.amount() %>
-    <% end %>
-    Total: <strong><%= '%.2f' % total %></strong>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="5" style='text-align: center;'>Total of all transactions: <strong><%= '%.2f' % Transaction.sum()%></strong></td>
-  </tr>
+  </tbody>
 
 </table>
+
+<br />
+  <% total = 0 %>
+  <% for transaction in @transactions %>
+  <%total += transaction.amount() %>
+  <% end %>Total: <strong><%= '%.2f' % total %></strong>
+<br /><br />
+
+<header><p>
+  <strong>Total of all Transactions: <%= '%.2f' % Transaction.sum()%></strong>
+</p></header>
 
 
 
