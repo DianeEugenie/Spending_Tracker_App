@@ -22,14 +22,15 @@
 
 
 <div class='filter'>
+  <form action='/transactions/sorted' method='GET'>
+    <input type='submit' value='Sort Descending'>
+  </form>
   <% for transaction in @filtered %>
 <form action='/transactions/filtered/<%= transaction.tag_id%>' method='GET'>
   <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
 </form>
 <% end %>
-<form action='/transactions/sorted' method='GET'>
-  <input type='submit' value='Sort Descending'>
-</form>
+
 </div>
 
 <div class='tr_table'>

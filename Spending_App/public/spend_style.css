@@ -166,7 +166,6 @@ html {
     justify-content: center;
     flex-wrap: nowrap;
     padding: 0.2em;
-    max-height: 10em;
     overflow: scroll;
   }
   .filter input {
@@ -341,7 +340,7 @@ html {
     justify-content: center;
     padding: 0.2em;
     max-height: 10em;
-    overflow: scroll;
+   overflow: scroll;
   }
   main {
     display: flex;
