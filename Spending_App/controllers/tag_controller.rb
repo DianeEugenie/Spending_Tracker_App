@@ -7,8 +7,8 @@ require_relative('../models/transaction.rb')
 get '/tags' do
   @tags = Tag.all()
   @budgets = Budget.all()
-  @merchants = Merchant.all()
-  @transactions = Transaction.all()
+  # @merchants = Merchant.all()
+  @transactions = Transaction.filtered()
   erb(:'tags/index')
 end
 

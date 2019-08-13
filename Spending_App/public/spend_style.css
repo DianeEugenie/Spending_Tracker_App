@@ -13,7 +13,9 @@ html {
   font-size: 0.9em;
 }
 
-@media all and (min-device-width: 770px) {
+
+/* CSS for bigger devices */
+@media all and (min-device-width: 768px) {
 /* (min-device-width: 770px) and (max-device-width)
 
 ,(min-device-width: 770px) and (max-device-width: 1000px)
@@ -21,11 +23,10 @@ html {
 
 main {
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   background-color: #c5d6d5;
-  min-width: 40em;
+  min-width: 45em;
 
 }
 
@@ -33,8 +34,7 @@ main header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+  margin: 1em 0;
 }
 
 header {
@@ -42,6 +42,13 @@ border: 1px solid #4d5453;
 border-radius: 5px;
 padding: 0 2em;
 background-color: #f5f7f7;
+}
+
+header a:hover, header a:active {
+  text-shadow: 1px 1px 5px #3f4d4d;
+}
+header a{
+   color: #465251;
 }
 
 html {
@@ -90,8 +97,16 @@ li a {
 a {
   text-decoration: none;
   margin: 0.2em 0;
-
+  color: #74807f;
 }
+
+td a:hover, td a:active {
+  text-decoration: none;
+  margin: 0.2em 0;
+  color: #3f4d4d;
+  text-shadow: 1px 2px 5px #3f4d4d;
+}
+
 
 li a:hover{
   box-shadow: 1px 1px 3px 1px #4d5453;
@@ -114,6 +129,7 @@ input {
   border: 1px solid #4d5453;
   border-radius: 3px;
   padding: 0.1em;
+  margin-top: 0.5em;
 }
 input:hover {
   background-color: #f5f7f7;
@@ -146,25 +162,20 @@ h1 {
 h3 {
   font-family: 'Vast Shadow', cursive;
 }
-/*
-section {
-  display: flex;
-align-items: stretch;
-} */
+
 
 .filter {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  padding: 0.3em;
+  flex-wrap: nowrap;
+  padding: 0.2em;
+  max-height: 10em;
+  overflow: scroll;
 }
 .filter input {
   margin-right: 0.3em;
 }
-/* .tr-table {
-  display: flex;
-  flex-direction: row;
-} */
 
 .transaction, .tag, .merchant, .budget {
   display: flex;
@@ -172,23 +183,19 @@ align-items: stretch;
   border: 1px inset #4d5453;
   border-radius: 5px;
   background-color: #d8e3e1;
-  padding: 1.7em 1.5em;
+  padding: 1.0em 1.1em;
   margin-top: 1em;
 }
 
-label, option, input {
-  margin: 0.3em 0;
+label, option {
+  margin: 0.2em 0;
 }
 
 
 
 
 
-/* table {
-  display: flex;
-  margin-left: 0.2em;
 
-} */
 
 tr {
   border-top: 1px solid black;
@@ -196,7 +203,9 @@ tr {
 }
 
 .tr-table {
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
 }
 
 .top-section {
@@ -205,8 +214,9 @@ tr {
 }
 section {
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
+
 .alert{
   margin: 0.5em;
   align-items: center;
@@ -230,14 +240,14 @@ td, th {
   text-align: left;
 }
 
-/* CSS for bigger devices */
+
 
 }
 
 /* CSS for smaller devices */
 
 @media all and (max-width: 760px),
-(min-device-width: 770px) and (max-device-width: 1000px)  {
+(min-device-width: 769px) and (max-device-width: 1000px)  {
 
   html {
     background-color: #E0E0E0;
@@ -254,7 +264,8 @@ td, th {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    align-items: stretch;
+    margin: 0 -3em;
+    max-width: 350px;
   }
 
   header {
@@ -267,15 +278,16 @@ td, th {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5em;
-  }
+    margin-bottom: 0.5em;
+    text-align: center;
+    padding: 0.5em;
+}
 
   nav {
     display: flex;
     align-items: flex-start;
-    padding: 0.5em;
+    padding: 0.7em;
     background-color: #8fa19f;
-
   }
 
   ul {
@@ -314,9 +326,6 @@ td, th {
     transform: translateY(0.1em);
   }
 
-
-
-
   h1 {
     font-family: 'Jacques Francois Shadow', cursive;
     font-size: 3em;
@@ -327,38 +336,41 @@ td, th {
     font-size: 1em;
   }
 
+
   .filter {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0.3em;
+    padding: 0.2em;
+    max-height: 10em;
+    overflow: scroll;
   }
   main {
     display: flex;
     flex-direction: column;
     align-items: center; /* was center */
     background-color: #c5d6d5;
-    /* padding: 2em; */
-    /* height: 100%; */
+    padding: 1em;
+
   }
 
 
-  table, thead, tbody, th, td, tr {
-    display:block;
-    background-color: #c5d6d5;
-  }
 
-tr {
-  border-bottom: 1px solid #4d5453;
-}
 .transaction, .tag, .merchant, .budget {
   display: flex;
   flex-direction: column;
   border: 1px inset #4d5453;
   border-radius: 5px;
   background-color: #d8e3e1;
-  padding: 1.7em 1.5em;
+  padding: 1.0em 1.1em;
   margin-top: 1em;
+}
+
+
+.tr-table {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
 }
 
 .transactions, .tags, .merchants {
@@ -368,12 +380,28 @@ tr {
   text-align: left;
 }
 
-  thead tr {
+table {
+  margin-top: 1.5em;
+  background-color: #d8e3e1;
+  border-radius: 5px;
+  text-align: left;
+}
+
+  table.transactions,   table.transactions thead,   table.transactions tbody, table.transactions th, table.transactions td, table.transactions tr {
+  display:block;
+  background-color: #c5d6d5;
+}
+
+table.transactions tr {
+border-bottom: 1px solid #4d5453;
+}
+
+    table.transactions thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-  td {
+    table.transactions td {
     /* Behave  like a "row" */
     border: none;
     position: relative;
@@ -381,25 +409,35 @@ tr {
   }
 
 
-  td:before {
+    table.transactions td:before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
     /* top: 6px; */
     left: 6px;
-    width: 45%;
+    width: 60%;
     padding-right: 10px;
     white-space: nowrap;
   }
 
-  td:nth-of-type(1):before { content: "Tag"; }
-  td:nth-of-type(2):before { content: "Merchant"; }
-  td:nth-of-type(3):before { content: "Date"; }
-  td:nth-of-type(4):before { content: "Amount"; }
-  td:nth-of-type(5):before { content: "Budget left"; }
-  td:nth-of-type(5):before { }
+  table.transactions td:nth-of-type(1):before { content: "Tag"; }
+  table.transactions td:nth-of-type(2):before { content: "Merchant"; }
+  table.transactions td:nth-of-type(3):before { content: "Date"; }
+  table.transactions td:nth-of-type(4):before { content: "Amount"; }
+  table.transactions td:nth-of-type(5):before { content: "Budget left"; }
+ td:nth-of-type(5):before { }
 
-  input {
+ td a:hover, td a:active {
+    text-decoration: none;
+    margin: 0.2em 0;
+    color: #3f4d4d;
+    text-shadow: 1px 2px 5px #3f4d4d;
+  }
+
+input {
+  margin-top: 2em;
+}
+  input, select {
     background-color: #f5f7f7;
     border: 1px solid #4d5453;
     border-radius: 3px;
@@ -424,16 +462,9 @@ tr {
     font-size: 0.65em;
     transform: translateY(0.1em);
   }
-  /* form {
-    align-items: right;
-  } */
 
-  .filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 0.3em;
-  }
+
+
   .filter input {
     margin-right: 0.3em;
   }
@@ -447,6 +478,35 @@ tr {
   }
 
 
+
+
+  header a:hover, header a:active {
+    text-shadow: 1px 1px 5px #3f4d4d;
+  }
+  header a{
+     color: #465251;
+  }
+  a {
+    text-decoration: none;
+    margin: 0.2em 0;
+    color: #74807f;
+  }
+
+  td a:hover, td a:active {
+    text-decoration: none;
+    margin: 0.2em 0;
+    color: #3f4d4d;
+    text-shadow: 1px 2px 5px #3f4d4d;
+  }
+
+
+  label, option, input {
+    margin: 0.3em 0;
+  }
+
+  input {
+    margin-top: 0.7em;
+  }
 
 
 

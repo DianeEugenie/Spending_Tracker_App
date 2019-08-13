@@ -21,10 +21,7 @@
 
 
 
-<!-- <section> -->
-
-
-<filters class='filter'>
+<div class='filter'>
   <% for transaction in @filtered %>
 <form action='/transactions/filtered/<%= transaction.tag_id%>' method='GET'>
   <input type='submit' value='Filter By <%=transaction.tag().type() %>'>
@@ -33,20 +30,9 @@
 <form action='/transactions/sorted' method='GET'>
   <input type='submit' value='Sort Descending'>
 </form>
-</filters>
+</div>
 
-
-
-
-
-
-<!--
-</section> -->
-
-
-
-
-<section>
+<div class='tr_table'>
 <table class='transactions'>
   <thead>
   <tr>
@@ -79,28 +65,18 @@
   </tbody>
 
 </table>
+</div>
 
-<br />
+</section>
+
+<p>
+  <br />
   <% total = 0 %>
   <% for transaction in @transactions %>
   <%total += transaction.amount() %>
   <% end %>Total: <strong><%= '%.2f' % total %></strong>
-<br /><br />
+</p><br />
 
 <header><p>
   <strong>Total of all Transactions: <%= '%.2f' % Transaction.sum()%></strong>
 </p></header>
-
-
-
-
-
-
-
-
-
-
-
-
-</section>
-</section>

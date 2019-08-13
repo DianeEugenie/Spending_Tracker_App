@@ -1,20 +1,18 @@
-<header><h3>Here come the tags!</h3></header>
+<header><h3>All Tags</h3></header>
 
 <table class='tags'>
   <tr>
     <th>Type</th>
     <th colspan="2">Merchants</th>
   </tr>
-  <% for tag in @tags %>
+  <% for transaction in @transactions %>
   <tr>
-    <td><a href="/tags/<%= tag.id() %>"><%= tag.type() %></a>
+    <td><a href="/tags/<%= transaction.tag_id() %>"><%= transaction.tag.type() %></a>
     </td>
-    <% for merchant in tag.merchants() %>
     <td colspan="2">
 
-      <%=merchant.name()%>
+      <%=transaction.merchant.name()%>
     </td>
-    <% end %>
 
 
   </tr>
