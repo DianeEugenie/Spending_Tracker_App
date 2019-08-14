@@ -114,6 +114,15 @@ class Transaction
     return sorted_transactions
   end
 
+  def self.all_by_date_limit()
+    sql = 'SELECT * FROM transactions
+    ORDER BY tr_date DESC
+    LIMIT 3;'
+    transaction_data = SqlRunner.run(sql)
+    sorted_transactions = transaction_data.map { |transaction| Transaction.new(transaction) }
+    return sorted_transactions
+  end
+
   #Filter by tag
   def self.all_filtered(tag_id)
     sql = 'SELECT * FROM transactions

@@ -11,7 +11,8 @@ require('pry-byebug')
 
 get '/' do
   @budgets = Budget.all()
-  @transactions = Transaction.all_by_date()
+  @transactions = Transaction.all_by_date_limit()
+  @merchants = Merchant.all()
   @tags = Tag.all()
   erb(:index)
 end

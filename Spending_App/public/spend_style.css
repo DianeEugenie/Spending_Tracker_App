@@ -13,13 +13,6 @@ html {
   font-size: 0.9em;
 }
 
-/* img {
-  border-radius: 10px;
-  max-width: 25%;
-  height: auto;
-  opacity: 0.6;
-} */
-
 
 @media all and (min-width: 768px),
 (min-device-width: 1000px) {
@@ -31,7 +24,7 @@ html {
     flex-direction: column;
     align-items: center;
     background-color: #c5d6d5;
-    min-width: 40em;
+    min-width: 50em;
 
   }
 
@@ -41,6 +34,12 @@ html {
     align-items: center;
     margin: 1em 0;
     text-align: center;
+
+  }
+
+  .main-header {
+    background-image: url('/images/background.jpg');
+    background-size: cover;
   }
 
   header {
@@ -51,7 +50,7 @@ html {
   }
 
   header a:hover, header a:active {
-    text-shadow: 1px 1px 5px #3f4d4d;
+    text-shadow: 1px 1px 5px #74807f;
   }
   header a{
     color: #465251;
@@ -71,7 +70,6 @@ html {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    /* height: 100%; */
     align-items: stretch;
 
   }
@@ -197,16 +195,6 @@ html {
   }
 
 
-
-
-
-
-
-  tr {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-  }
-
   .tr-table {
     display: flex;
     flex-direction: row;
@@ -225,15 +213,10 @@ html {
     display: flex;
     flex-direction: column;
   }
-  /* section {
-    flex-direction: column;
-    /* align-items: center; */
-
 
   .alert{
     margin: 0.5em;
     align-items: center;
-    /* border: 1px solid #cf4848; */
     color: #cf4848;
     text-align: center;
     font-weight: bolder;
@@ -254,6 +237,10 @@ html {
     text-align: left;
   }
 
+
+  .popular_tag header, .popular_merchant header {
+    background-color: #d8e3e1;
+  }
 
 
 }
@@ -289,6 +276,11 @@ html {
     background-color: #f5f7f7;
 
   }
+
+  .popular_tag header, .popular_merchant header {
+    background-color: #d8e3e1;
+  }
+
   main header {
     display: flex;
     flex-direction: column;
@@ -362,7 +354,7 @@ html {
   main {
     display: flex;
     flex-direction: column;
-    align-items: center; /* was center */
+    align-items: center;
     background-color: #c5d6d5;
     padding: 1em;
   }
@@ -431,10 +423,8 @@ overflow:scroll;
 
 
   table.transactions td:before {
-    /* Now like a table header */
+    /* To make the first table row become a header but on the left side */
     position: absolute;
-    /* Top/left values mimic padding */
-    /* top: 6px; */
     left: 6px;
     width: 60%;
     padding-right: 10px;
@@ -492,7 +482,6 @@ overflow:scroll;
   .alert{
     margin: 0.5em;
     align-items: center;
-    /* border: 1px solid #cf4848; */
     color: #cf4848;
     text-align: center;
     font-weight: bolder;

@@ -1,5 +1,8 @@
 <header><h3>Merchant Details:</h3></header>
 
+
+
+<div class='merchant' style='text-align: center;'>
 <p>Name: <%= @merchant.name() %></p>
 
 <form action='/merchants/<%= @merchant.id %>/delete' method='POST'>
@@ -9,5 +12,7 @@
 <form action='/merchants/<%= @merchant.id %>/edit' method='GET'>
 <input type='submit' value='Edit Tag'>
 </form>
+</div>
 
+<br />
 <article class='alert'><strong>Please note:</strong> if you delete this merchant,<br /> all transactions relating to this merchant will be deleted as well.</article>

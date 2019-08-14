@@ -1,5 +1,6 @@
 <header><h3>Budget Details</h3></header>
 
+<div class='budget' style='text-align: center;'>
 <p>Budget: <%= '%.2f' % @budget.budget() %> </p>
 <p>Tag: <%= @budget.tag().type() %></p>
 
@@ -10,3 +11,4 @@
 <form action='/budgets/<%= @budget.id %>/edit' method='GET'>
 <input type='submit' value='Edit Budget'>
 </form>
+</div>

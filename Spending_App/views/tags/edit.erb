@@ -1,6 +1,6 @@
 <header><h3>Edit a Tag</h3></header>
 
-<form action='/tags/<%= @tag.id %>' method='POST'>
+<form class='tag' action='/tags/<%= @tag.id %>' method='POST'>
 
 <label for='type'>Type:</label>
 <input required type='text' id='type' name= 'type' value=<%=@tag.type%>>

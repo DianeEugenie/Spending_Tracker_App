@@ -14,11 +14,10 @@
       <td><%= @transaction.amount() %></td>
       <td>
       <form action='/transactions/<%= @transaction.id %>/edit' method='GET'>
-      <input type='submit' value='Edit Transaction'>
+      <input type='submit' value='Edit'>
       </form>
-
       <form action='/transactions/<%= @transaction.id %>/delete' method='POST'>
-        <input type='submit' value='Delete Transaction'>
+        <input type='submit' value='Delete'>
       </form>
       </td>
     </tr>

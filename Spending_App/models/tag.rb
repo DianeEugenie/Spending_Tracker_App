@@ -89,6 +89,18 @@ class Tag
   end
 
 
+  def self.most_popular_tag()
+    sql = "SELECT tag_id,
+    COUNT(*) AS count
+    FROM transactions
+    GROUP BY tag_id
+    ORDER BY count
+    DESC LIMIT 1;"
+    popular_tag = SqlRunner.run(sql).first['tag_id'].to_i
+    Tag.find(popular_tag)
+  end
+
+
 
 
 

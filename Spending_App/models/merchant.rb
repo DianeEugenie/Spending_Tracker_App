@@ -69,5 +69,17 @@ class Merchant
     return transactions.map { |transaction| Transaction.new(transaction)}
   end
 
+  def self.most_popular_merchant()
+    sql = "SELECT merchant_id,
+    COUNT(*) AS count
+    FROM transactions
+    GROUP BY merchant_id
+    ORDER BY count
+    DESC LIMIT 1;"
+    popular_merchant = SqlRunner.run(sql).first['merchant_id'].to_i
+    Merchant.find(popular_merchant)
+  end
+
+
 
 end
