@@ -104,7 +104,7 @@ class Transaction
 
 
 
-
+#CHECK WITH STEPHEN
   #Sort by time
   def self.all_by_date()
     sql = 'SELECT * FROM transactions

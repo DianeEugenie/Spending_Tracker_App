@@ -13,9 +13,18 @@ html {
   font-size: 0.9em;
 }
 
+/* img {
+  border-radius: 10px;
+  max-width: 25%;
+  height: auto;
+  opacity: 0.6;
+} */
+
 
 @media all and (min-width: 768px),
 (min-device-width: 1000px) {
+
+
 
   main {
     display: flex;
@@ -31,6 +40,7 @@ html {
     flex-direction: column;
     align-items: center;
     margin: 1em 0;
+    text-align: center;
   }
 
   header {
@@ -203,6 +213,13 @@ html {
     margin: 1em;
 
   }
+  .tr_table {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+    overflow: scroll;
+
+  }
 
   .top-section {
     display: flex;
@@ -224,6 +241,7 @@ html {
 
   table {
     border: 1px solid #4d5453;
+    overflow: scroll;
   }
   td, th {
     padding: 0.2em;
@@ -339,8 +357,7 @@ html {
     flex-direction: column;
     justify-content: center;
     padding: 0.2em;
-    max-height: 10em;
-   overflow: scroll;
+
   }
   main {
     display: flex;
@@ -364,6 +381,12 @@ html {
 
 
   .tr-table {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+overflow:scroll;
+  }
+  .tr_table {
     display: flex;
     flex-direction: column;
     margin: 1em;

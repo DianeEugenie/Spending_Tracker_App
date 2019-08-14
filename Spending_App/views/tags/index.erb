@@ -5,16 +5,22 @@
     <th>Type</th>
     <th colspan="2">Merchants</th>
   </tr>
-  <% for transaction in @transactions %>
+  <% for tag in @tags %>
   <tr>
-    <td><a href="/tags/<%= transaction.tag_id() %>"><%= transaction.tag.type() %></a>
+    <td><a href="/tags/<%= tag.id() %>"><%= tag.type() %></a>
     </td>
     <td colspan="2">
 
-      <%=transaction.merchant.name()%>
+      <%for transaction in @transactions%>
+      <% if transaction.tag_id() == tag.id() %>
+      <%=transaction.merchant.name() %>
+      <% end %>
+      <% end %>
+      <% end %>
     </td>
 
 
   </tr>
-  <% end %>
+
+
 </table>
