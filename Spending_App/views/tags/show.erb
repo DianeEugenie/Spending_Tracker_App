@@ -3,16 +3,17 @@
 
 
 <div class='tag' style='text-align: center;'>
-<p>Type: <%= @tag.type() %></p>
+  <p>Type: <%= @tag.type() %></p>
 
-<form action='/tags/<%= @tag.id %>/edit' method='GET'>
+  <form action='/tags/<%= @tag.id %>/edit' method='GET'>
 
-<input type='submit' value='Edit Tag'>
+    <input type='submit' value='Edit Tag'>
 
-</form>
-<form action='/tags/<%= @tag.id %>/delete' method='POST'>
-  <input type='submit' value='Delete Tag'>
-</form>
+  </form>
+  <form action='/tags/<%= @tag.id %>/delete' method='POST'>
+    <input type='submit' value='Delete Tag'>
+  </form>
 </div>
 <br />
+
 <article class='alert'><strong>Please note:</strong> if you delete this tag,<br /> the budget and all transactions relating to this tag will be deleted as well.</article>

@@ -206,7 +206,7 @@ html {
     flex-direction: row;
     margin: 1em;
     overflow: scroll;
-
+    max-height: 290px;
   }
 
   .top-section {
