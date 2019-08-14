@@ -258,7 +258,7 @@ html {
     color: #465251;
     font-family: 'Catamaran', sans-serif;
     font-size: 0.62em;
-  height: 100%;
+    height: 100%;
   }
 
   body {
@@ -376,7 +376,7 @@ html {
     display: flex;
     flex-direction: column;
     margin: 1em;
-overflow:scroll;
+    overflow:scroll;
   }
   .tr_table {
     display: flex;
@@ -401,13 +401,8 @@ overflow:scroll;
 
   table.transactions,   table.transactions thead,   table.transactions tbody, table.transactions th, table.transactions td, table.transactions tr {
     display:block;
-    /* background-color: #c5d6d5; */
     width: 150px;
   }
-/*
-  table.transactions tr {
-    border-bottom: 1px solid #4d5453;
-  } */
 
   table.transactions thead tr {
     position: absolute;

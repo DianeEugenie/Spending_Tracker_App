@@ -13,19 +13,19 @@
 
   </tr>
   <tr>
-  <% for budget in @budgets %>
-  <% for tag in @tags %>
-  <% if budget.tag_id() == tag.id()%>
-  <td><%= tag.type()%></td>
-  <% end %>
-  <% end %>
-  <td>
-    <a href='/budgets/<%= budget.id() %>'>
-      <%= '%.2f' % budget.budget %>
+    <% for budget in @budgets %>
+    <% for tag in @tags %>
+    <% if budget.tag_id() == tag.id()%>
+    <td><%= tag.type()%></td>
+    <% end %>
+    <% end %>
+    <td>
+      <a href='/budgets/<%= budget.id() %>'>
+        <%= '%.2f' % budget.budget %>
 
-    </a>
-  </td>
-  <td><%= '%.2f' % (budget.budget - budget.spent) %></td>
+      </a>
+    </td>
+    <td><%= '%.2f' % (budget.budget - budget.spent) %></td>
 
   </tr>
 

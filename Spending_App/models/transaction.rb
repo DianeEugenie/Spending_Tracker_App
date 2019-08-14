@@ -28,7 +28,6 @@ class Transaction
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id.to_i()
-    # adjust_budget()
   end
 
   def self.delete_all()
@@ -102,9 +101,6 @@ class Transaction
     return sum
   end
 
-
-
-#CHECK WITH STEPHEN
   #Sort by time
   def self.all_by_date()
     sql = 'SELECT * FROM transactions
@@ -114,6 +110,7 @@ class Transaction
     return sorted_transactions
   end
 
+  #Query for last three transactions
   def self.all_by_date_limit()
     sql = 'SELECT * FROM transactions
     ORDER BY tr_date DESC
@@ -143,7 +140,7 @@ class Transaction
     return tags
   end
 
-  #Select budget of a tag of the transaction?
+  #Select budget of a tag of the transaction
   def get_budget()
     sql = 'SELECT b.* FROM budgets b
     INNER JOIN transactions t
@@ -154,7 +151,6 @@ class Transaction
     budget = SqlRunner.run(sql, values).first()
     return Budget.new(budget)
   end
-
 
 
 

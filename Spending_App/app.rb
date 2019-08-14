@@ -16,7 +16,3 @@ get '/' do
   @tags = Tag.all()
   erb(:index)
 end
-
-binding.pry
-
-nil

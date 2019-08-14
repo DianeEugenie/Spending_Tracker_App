@@ -1,16 +1,16 @@
 <article class='alert'>
-    <% for budget in @budgets %>
+  <% for budget in @budgets %>
 
-    <% new_budget = budget.budget() - budget.spent() %>
+  <% new_budget = budget.budget() - budget.spent() %>
 
-    <% if (new_budget > 0 && new_budget <= 30) %>
-    ONLY £ <%= '%.2f' %new_budget%> left for <%=budget.tag().type()%>!<br />
-    <% elsif (new_budget == 0) %>
-    Budget reached for <%=budget.tag().type()%>!<br />
-    <% elsif (new_budget < 0) %>
-    <%= '%.2f' %new_budget %> OVER budget for <%=budget.tag().type()%>!<br />
-    <%end%>
-    <%end%>
+  <% if (new_budget > 0 && new_budget <= 30) %>
+  ONLY £ <%= '%.2f' %new_budget%> left for <%=budget.tag().type()%>!<br />
+  <% elsif (new_budget == 0) %>
+  Budget reached for <%=budget.tag().type()%>!<br />
+  <% elsif (new_budget < 0) %>
+  <%= '%.2f' %new_budget %> OVER budget for <%=budget.tag().type()%>!<br />
+  <%end%>
+  <%end%>
 </article>
 
 <header><h3>Last Transactions</h3></header>
@@ -19,26 +19,26 @@
 
   <table class='transactions'>
     <thead>
-    <tr>
-      <th>Tag</th>
-      <th>Merchant</th>
-      <th>Date</th>
-      <th>Amount</th>
-      <th>Budget left</th>
-    </tr>
+      <tr>
+        <th>Tag</th>
+        <th>Merchant</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Budget left</th>
+      </tr>
     </thead>
     <% for transaction in @transactions %>
     <%budget_left = transaction.get_budget.budget() - transaction.get_budget.spent() %>
     <tbody>
-    <tr>
+      <tr>
 
-      <td><%= transaction.tag().type() %></td>
-      <td><%= transaction.merchant().name() %></td>
-      <td><%= transaction.tr_date() %>
-      </td>
-      <td><%= '%.2f' % transaction.amount() %></td>
-      <td
-      <% if budget_left <= 0 %>
+        <td><%= transaction.tag().type() %></td>
+        <td><%= transaction.merchant().name() %></td>
+        <td><%= transaction.tr_date() %>
+        </td>
+        <td><%= '%.2f' % transaction.amount() %></td>
+        <td
+        <% if budget_left <= 0 %>
         style='color: #cf4848;'
         <% elsif budget_left > 0 && budget_left <= 30 %>
         style='color: #db8127;'
@@ -48,23 +48,23 @@
         <%= '%.2f' % budget_left %>
       </td>
       <td><form action='/transactions/<%= transaction.id %>' method='GET'>
-      <input type='submit' value='Edit or Delete'>
+        <input type='submit' value='Edit or Delete'>
       </form></td>
     </tr>
     <% end %>
-    </tbody>
-    </table>
+  </tbody>
+</table>
 <br />
 </div>
 
 <header><h3>Most Popular Tag</h3></header>
 
 <div class='popular_tag'>
-<header><%=Tag.most_popular_tag().type()%></header>
+  <header><%=Tag.most_popular_tag().type()%></header>
 </div>
 
 <header><h3>Most Popular Merchant</h3></header>
 
 <div class='popular_merchant'>
-<header><%=Merchant.most_popular_merchant().name()%></header>
+  <header><%=Merchant.most_popular_merchant().name()%></header>
 </div>

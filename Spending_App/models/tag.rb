@@ -88,7 +88,7 @@ class Tag
     return Budget.new(budget)
   end
 
-
+  #Get most popular tag
   def self.most_popular_tag()
     sql = "SELECT tag_id,
     COUNT(*) AS count

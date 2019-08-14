@@ -1,24 +1,24 @@
 <header><h3>Transaction Details:</h3></header>
 
 <table class='transactions'>
-    <tr>
-      <th>Tag</th>
-      <th>Merchant</th>
-      <th>Transaction Date</th>
-      <th>Amount</th>
-    </tr>
-    <tr>
-      <td><%= @transaction.tag().type() %></td>
-      <td><%= @transaction.merchant().name() %></td>
-      <td><%= @transaction.tr_date() %></td>
-      <td><%= @transaction.amount() %></td>
-      <td>
+  <tr>
+    <th>Tag</th>
+    <th>Merchant</th>
+    <th>Transaction Date</th>
+    <th>Amount</th>
+  </tr>
+  <tr>
+    <td><%= @transaction.tag().type() %></td>
+    <td><%= @transaction.merchant().name() %></td>
+    <td><%= @transaction.tr_date() %></td>
+    <td><%= @transaction.amount() %></td>
+    <td>
       <form action='/transactions/<%= @transaction.id %>/edit' method='GET'>
-      <input type='submit' value='Edit'>
+        <input type='submit' value='Edit'>
       </form>
       <form action='/transactions/<%= @transaction.id %>/delete' method='POST'>
         <input type='submit' value='Delete'>
       </form>
-      </td>
-    </tr>
+    </td>
+  </tr>
 </table>

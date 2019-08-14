@@ -2,9 +2,9 @@
 
 <form class='merchant' action='/merchants/<%= @merchant.id() %>' method='POST'>
 
-<label for='merchant-name'>Name:</label>
-<input required type='text' id='merchant-name' name= 'name' value=<%= @merchant.name() %>>
+  <label for='merchant-name'>Name:</label>
+  <input required type='text' id='merchant-name' name= 'name' value=<%= @merchant.name() %>>
 
-<input type='submit' value='Update Merchant'>
+  <input type='submit' value='Update Merchant'>
 
 </form>

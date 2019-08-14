@@ -69,6 +69,7 @@ class Merchant
     return transactions.map { |transaction| Transaction.new(transaction)}
   end
 
+#Get most popular merchant
   def self.most_popular_merchant()
     sql = "SELECT merchant_id,
     COUNT(*) AS count

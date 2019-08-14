@@ -11,7 +11,7 @@ class Budget
     @id = budget['id'].to_i if budget['id']
     @budget = budget['budget'].to_f
     @tag_id = budget['tag_id'].to_i
-    #create a budget left property?
+
   end
 
   def save()
@@ -78,7 +78,18 @@ class Budget
     return transactions
   end
 
+  #Get the total amount spent per transaction - used for budget to get spending belonging to a particular budget
+    def spent()
 
+      total = 0
+      for transaction in transactions()
+        total += transaction.amount
+      end
+      return total
+    end
+
+
+#Functions that were not used as they caused an issue whenever you clicked on transactions it would update the budget again.
   def sum()
     transactions = transactions()
     amount = transactions.map{ |transaction| transaction.amount }
@@ -99,30 +110,6 @@ class Budget
     update()
   end
 
-#Get the total amount spent per transaction belonging to a specific budget with tag_id
-  def spent()
-
-    total = 0
-    for transaction in transactions()
-      total += transaction.amount
-    end
-    return total
-  end
-
-
-
-  # #Maybe give budget the power to save transaction and decrease budget this way?
-  # def save_transaction(transaction)
-  #   price = transaction.amount()
-  #   Transaction.new(
-  #     'tag_id' => @tag_id,
-  #     'merchant_id' => transaction.merchant_id(),
-  #     'tr_date' => transaction.tr_date(),
-  #     'amount' => price).save()
-  #   @budget -= price
-  #   update()
-  #   alert()
-  # end
 
 
   end
