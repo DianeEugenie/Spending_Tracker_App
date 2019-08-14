@@ -17,30 +17,56 @@ html {
 @media all and (min-width: 768px),
 (min-device-width: 1000px) {
 
+  html {
+    background-color: #E0E0E0;
+    display: flex;
+    justify-content:center;
+    align-items: stretch;
+    color: #465251;
+    font-family: 'Catamaran', sans-serif;
+    height: 100%;
+  }
 
 
+  /* Relating to main header */
+.main-header {
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+}
+
+main header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em 0;
+  text-align: center;
+
+}
+
+/* Home page specifics */
+.popular_tag header, .popular_merchant header {
+  background-color: #d8e3e1;
+}
+
+/* Edits relating to the body and html sections */
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #c5d6d5;
     min-width: 50em;
-
   }
 
-  main header {
-    display: flex;
-    flex-direction: column;
+
+  .alert{
+    margin: 0.5em;
     align-items: center;
-    margin: 1em 0;
+    color: #cf4848;
     text-align: center;
-
+    font-weight: bolder;
   }
 
-  .main-header {
-    background-image: url('/images/background.jpg');
-    background-size: cover;
-  }
+
 
   header {
     border: 1px solid #4d5453;
@@ -56,15 +82,6 @@ html {
     color: #465251;
   }
 
-  html {
-    background-color: #E0E0E0;
-    display: flex;
-    justify-content:center;
-    align-items: stretch;
-    color: #465251;
-    font-family: 'Catamaran', sans-serif;
-    height: 100%;
-  }
 
   body {
     display: flex;
@@ -72,6 +89,18 @@ html {
     flex-direction: row;
     align-items: stretch;
 
+  }
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 0.2em;
+    overflow: scroll;
+  }
+  .filter input {
+    margin-right: 0.3em;
   }
 
   nav {
@@ -98,19 +127,6 @@ html {
     justify-content: space-around;
   }
 
-  a {
-    text-decoration: none;
-    margin: 0.2em 0;
-    color: #74807f;
-  }
-
-  td a:hover, td a:active {
-    text-decoration: none;
-    margin: 0.2em 0;
-    color: #3f4d4d;
-    text-shadow: 1px 2px 5px #3f4d4d;
-  }
-
 
   li a:hover{
     box-shadow: 1px 1px 3px 1px #4d5453;
@@ -126,6 +142,56 @@ html {
   }
 
 
+  h1 {
+    font-family: 'Jacques Francois Shadow', cursive;
+    font-size: 4em;
+  }
+
+  h3 {
+    font-family: 'Vast Shadow', cursive;
+  }
+
+  /* Relating to tables */
+
+  td a:hover, td a:active {
+    text-decoration: none;
+    margin: 0.2em 0;
+    color: #3f4d4d;
+    text-shadow: 1px 2px 5px #3f4d4d;
+  }
+
+  table {
+    border: 1px solid #4d5453;
+    overflow: scroll;
+  }
+  td, th {
+    padding: 0.2em;
+  }
+
+  .transactions, .tags, .merchants {
+    margin-top: 1.5em;
+    background-color: #d8e3e1;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+
+    .tr-table {
+      display: flex;
+      flex-direction: row;
+      margin: 1em;
+
+    }
+    .tr_table {
+      display: flex;
+      flex-direction: row;
+      margin: 1em;
+      overflow: scroll;
+      height: 250px;
+    }
+
+
+/* Relating to forms */
 
 
   input {
@@ -152,32 +218,12 @@ html {
     transform: translateY(0.1em);
   }
 
-
-
   select {
     background-color: #f5f7f7;
   }
 
-  h1 {
-    font-family: 'Jacques Francois Shadow', cursive;
-    font-size: 4em;
-  }
-
-  h3 {
-    font-family: 'Vast Shadow', cursive;
-  }
-
-
-  .filter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: nowrap;
-    padding: 0.2em;
-    overflow: scroll;
-  }
-  .filter input {
-    margin-right: 0.3em;
+  label, option {
+    margin: 0.2em 0;
   }
 
   .transaction, .tag, .merchant, .budget {
@@ -190,57 +236,21 @@ html {
     margin-top: 1em;
   }
 
-  label, option {
-    margin: 0.2em 0;
-  }
-
-
-  .tr-table {
-    display: flex;
-    flex-direction: row;
-    margin: 1em;
-
-  }
-  .tr_table {
-    display: flex;
-    flex-direction: row;
-    margin: 1em;
-    overflow: scroll;
-    max-height: 250px;
-  }
-
   .top-section {
     display: flex;
     flex-direction: column;
   }
 
-  .alert{
-    margin: 0.5em;
-    align-items: center;
-    color: #cf4848;
-    text-align: center;
-    font-weight: bolder;
-  }
 
-  table {
-    border: 1px solid #4d5453;
-    overflow: scroll;
-  }
-  td, th {
-    padding: 0.2em;
-  }
-
-  .transactions, .tags, .merchants {
-    margin-top: 1.5em;
-    background-color: #d8e3e1;
-    border-radius: 5px;
-    text-align: left;
-  }
+/* Relating to the format of links */
 
 
-  .popular_tag header, .popular_merchant header {
-    background-color: #d8e3e1;
+  a {
+    text-decoration: none;
+    margin: 0.2em 0;
+    color: #74807f;
   }
+
 
 
 }
@@ -259,6 +269,11 @@ html {
     font-family: 'Catamaran', sans-serif;
     font-size: 0.62em;
     height: 100%;
+  }
+
+  .main-header {
+    background-image: url('/images/background.jpg');
+    background-size: cover;
   }
 
   body {
@@ -399,6 +414,7 @@ html {
     text-align: left;
   }
 
+/* Relating to collapsing bigger tables when looking at the app on a smaller device */
   table.transactions,   table.transactions thead,   table.transactions tbody, table.transactions th, table.transactions td, table.transactions tr {
     display:block;
     width: 150px;
